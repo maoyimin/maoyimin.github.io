@@ -1,0 +1,43 @@
+baseurl = "https://maoyimin.github.io"
+publishDir = "../maoyimin.github.io"
+languageCode = "en-us"
+title = "Yimin's homepage"
+theme = "hugo-xmin"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+preserveTaxonomyNames = true
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+    post = "/post/:year/:month/:day/:slug/"
+    note = "/note/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+[[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 3
+[[menu.main]]
+    name = "Teaching"
+    url = "/teaching/"
+    weight = 4
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 5
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 6
+
+[params]
+    description = "Yimin's homepage"
+    footer = "毛益民 2018 | [ResearchGate](https://www.researchgate.net/profile/Yimin_Mao3) "
