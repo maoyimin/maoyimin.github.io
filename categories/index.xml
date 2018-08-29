@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Yimin&#39;s homepage</title>
-    <link>https://maoyimin.github.io/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://maoyimin.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>生活</title>
-      <link>https://maoyimin.github.io/categories/%E7%94%9F%E6%B4%BB/</link>
+      <link>/categories/%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/categories/%E7%94%9F%E6%B4%BB/</guid>
+      <guid>/categories/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     
     <item>
       <title>研究方法</title>
-      <link>https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</link>
+      <link>/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</link>
       <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</guid>
+      <guid>/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</guid>
       <description></description>
     </item>
     

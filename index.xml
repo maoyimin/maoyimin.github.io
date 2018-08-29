@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Yimin&#39;s homepage</title>
-    <link>https://maoyimin.github.io/</link>
+    <link>/</link>
     <description>Recent content in Home on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyimin.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>哥大访学生活</title>
-      <link>https://maoyimin.github.io/post/2018/08/29/visitingcu/</link>
+      <link>/post/2018/08/29/visitingcu/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/post/2018/08/29/visitingcu/</guid>
+      <guid>/post/2018/08/29/visitingcu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>因果推断的匹配方法</title>
-      <link>https://maoyimin.github.io/note/2018/08/28/matching-for-causal-inference/</link>
+      <link>/note/2018/08/28/matching-for-causal-inference/</link>
       <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/note/2018/08/28/matching-for-causal-inference/</guid>
+      <guid>/note/2018/08/28/matching-for-causal-inference/</guid>
       <description>Basic steps for matching The following are the basic steps in performing a causal analysis using data preprocessing (Stuart, 2010)1:
 Decide on covariates for which balance must be achieved Estimate the distance measure (e.g., propensity score) Condition on the distance measure (e.g., using matching, weighting, or subclassification) Assess balance on the covariates of interest; if poor, repeat steps 2-4 Estimate the treatment effect in the conditioned sample   一些有用的R包 cobalt R package cobalt package 是一个集成了诸多匹配方法的R包，由Noah Greifer开发。使用说明</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://maoyimin.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/about/</guid>
+      <guid>/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>https://maoyimin.github.io/projects/</link>
+      <link>/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/projects/</guid>
+      <guid>/projects/</guid>
       <description>科研项目 主持  课题负责人，国家社会科学基金青年项目“地方政府环境管制中的多方博弈与选择性执法研究”（18CZZ023）
  子课题负责人，研究阐释党的十九大精神国家社科基金专项课题“基于法治中国建设的党和国家监督体系研究”（18VSJ05））之“面向权力法治化的国家监察体制改革路径研究”。
  课题负责人，浙江省哲学社会科学规划一般项目“腐败传染的动因、机制及其治理研究”（17NDJC223YB）
@@ -55,12 +55,12 @@ Decide on covariates for which balance must be achieved Estimate the distance me
     
     <item>
       <title>Publications</title>
-      <link>https://maoyimin.github.io/publications/</link>
+      <link>/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/publications/</guid>
+      <guid>/publications/</guid>
       <description>专著  陈国权、毛益民等：《权力法治与廉政治理》，中国社会科学出版社，2018年7月。
- 陈国权等：《权力制约监督论》，浙江大学出版社，2013年出版（本人为第二作者），本书获第七届教育部高等学校科学研究优秀成果奖（人文社会科学）三等奖
+ 陈国权等：《权力制约监督论》，浙江大学出版社，2013年出版（第二作者），本书获第七届教育部高等学校科学研究优秀成果奖（人文社会科学）三等奖
    论文 英文  Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research, Online first. Link
  Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. link
    中文  毛益民、陈国权：《民主反腐的情境适配：一项跨国比较分析》，《经济社会体制比较》，2018年第2期。链接
@@ -70,10 +70,10 @@ Decide on covariates for which balance must be achieved Estimate the distance me
     
     <item>
       <title>Teaching</title>
-      <link>https://maoyimin.github.io/teaching/</link>
+      <link>/teaching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/teaching/</guid>
+      <guid>/teaching/</guid>
       <description>主要课程 2018-2019学年  《公共危机管理》
  《领导学》
  《公共管理案例分析》
