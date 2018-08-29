@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Causal inference on Yimin&#39;s homepage</title>
-    <link>https://maoyimin.github.io/tags/causal-inference/</link>
+    <link>/tags/causal-inference/</link>
     <description>Recent content in Causal inference on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyimin.github.io/tags/causal-inference/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/causal-inference/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>因果推断的匹配方法</title>
-      <link>https://maoyimin.github.io/note/2018/08/28/matching-for-causal-inference/</link>
+      <link>/note/2018/08/28/matching-for-causal-inference/</link>
       <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/note/2018/08/28/matching-for-causal-inference/</guid>
+      <guid>/note/2018/08/28/matching-for-causal-inference/</guid>
       <description>Basic steps for matching The following are the basic steps in performing a causal analysis using data preprocessing (Stuart, 2010)1:
 Decide on covariates for which balance must be achieved Estimate the distance measure (e.g., propensity score) Condition on the distance measure (e.g., using matching, weighting, or subclassification) Assess balance on the covariates of interest; if poor, repeat steps 2-4 Estimate the treatment effect in the conditioned sample   一些有用的R包 cobalt R package cobalt package 是一个集成了诸多匹配方法的R包，由Noah Greifer开发。使用说明</description>
     </item>

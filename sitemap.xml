@@ -3,56 +3,56 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://maoyimin.github.io/note/2018/08/28/matching-for-causal-inference/</loc>
+    <loc>/note/2018/08/28/matching-for-causal-inference/</loc>
     <lastmod>2018-08-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/about/</loc>
+    <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/tags/causal-inference/</loc>
-    <lastmod>2018-08-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/</loc>
-    <lastmod>2018-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/note/</loc>
+    <loc>/tags/causal-inference/</loc>
     <lastmod>2018-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/projects/</loc>
+    <loc>/</loc>
+    <lastmod>2018-08-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/publications/</loc>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/tags/</loc>
+    <loc>/note/</loc>
     <lastmod>2018-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/teaching/</loc>
+    <loc>/projects/</loc>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</loc>
+    <loc>/publications/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-08-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/teaching/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2018-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
