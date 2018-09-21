@@ -1,6 +1,5 @@
 ---
 title: 因果推断的匹配方法
-author: mym
 date: '2018-09-21'
 slug: Matching for causal inference
 categories:
