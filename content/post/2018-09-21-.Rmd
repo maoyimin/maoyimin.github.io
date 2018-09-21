@@ -25,3 +25,5 @@ The following are the basic steps in performing a causal analysis using data pre
 cobalt package 是一个集成了诸多匹配方法的R包，由**Noah Greifer**开发。[使用说明](https://cran.r-project.org/web/packages/cobalt/vignettes/cobalt_A0_basic_use.html)
 
 [^1]:Stuart, E. A. (2010). Matching Methods for Causal Inference: A Review and a Look Forward. Statistical Science, 25(1), 1–21. http://doi.org/10.1214/09-STS313.
+
+try [ppt](/slides/ppt/ppt.html)
