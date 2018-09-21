@@ -24,4 +24,4 @@ tags:
 
 <img src="/img/cu-lib2.jpg" style="max-width:80%;min-width:100px;float:center"/>
 
-
+hhhh[pdf](~/Documents/github/maoyimin.github.io/pdf/decentralization2018.pdf)
