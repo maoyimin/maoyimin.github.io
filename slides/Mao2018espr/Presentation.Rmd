@@ -1,0 +1,192 @@
+---
+title: "Does democratic transition reduce carbon intensity?"
+author: 
+- Yimin MAO
+- Zhejiang Gongshang University
+- iammym@163.com
+date: "`r Sys.Date() `"
+output:
+  xaringan::moon_reader:
+    css: [default, zh-CN.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+# Contents
+## Introduction
+## Method and data
+## Results and discusstion
+## Conclusion
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(htmltools.dir.version = FALSE)
+library(DT)
+```
+
+---
+# Introduction
+- Global warming has become one of the biggest threats to human existence. 
+- The annual reports of International Energy Agency indicate that energy related CO2 emissions count for approximately 70% of the global anthropogenic greenhouse gas. 
+## Carbon intensity
+- *CO2 emissions per unit of economic output (CO2/GDP)*
+- the goal of reducing carbon intensity is to generate a maximum of economic wealth with a minimum of carbon emissions(Herzog et al. 2006).
+
+---
+## Related literature
+-Existing literatures have revealed that the change trajectory of carbon intensity in one country are affected by multiple social-economic factors, mainly including economic growth, energy intensity, industrial structure, urbanization, etc.(Roberts and Grimes 1997; Guan et al. 2014; Thomakos and Alexopoulos 2016; Chang et al. 2017). 
+
+-However, few studies have examined the effects of political institutions, democracy or the absence thereof, on carbon intensity. 
+
+-Recently, some researchers have investigated the relationship between democracy and CO2 emissions. 
+
+-  Mayer(2017) examines the impact of democracy on the total CO2 emissions and finds that democracy decreases CO2 emissions in a modest degree. 
+
+-  You et al.(2015) find that the impact of democracy on CO2 emissions per capita is heterogeneous across quantiles (positive for the least emissions countries while negative for the most emissions countries). 
+
+
+---
+## This paper wants to...
+
+**However, the outcome they are interested in is total CO2 emissions or CO2 emissions per capita, instead of carbon intensity (CO2/GDP).**
+
+-Thomakos and Alexopoulos(2016) argue that it may shows opposite trends over time between carbon intensity and total CO2 emissions. 
+
+To be specific, this paper examines whether democratic transition can reduce carbon intensity by using synthetic control method(SCM)(Abadie and Gardeazabal 2003; Abadie et al. 2010; Abadie et al. 2015). 
+
+---
+# Method and data
+## Potential outcomes and causal inference
+-The estimation of causal effects, by its nature, is a comparison of potential outcomes(Rubin 1974). 
+
+-Specifically, each unit i in the sample has two potential outcomes, that is, the potential outcome if it is treated, Yi(1), and the potential outcome if it is not treated, Yi(0). Then the causal effects of treatment on the unit i are the gap between Yi(1) and Yi(0). 
+
+-However, it is impossible to observe both of potential in reality because each unit i will receive either treatment or control. 
+
+**“fundamental problem of causal inference”(Holland 1986).**
+
+---
+## Synthetic control method
+key references:
+-  Abadie A, Diamond A, Hainmueller J (2010) Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California’s Tobacco Control Program. Journal of the American Statistical Association 105:493–505. doi: 10.1198/jasa.2009.ap08746
+
+- Abadie A, Diamond A, Hainmueller J (2015) Comparative Politics and the Synthetic Control Method. American Journal of Political Science 59:495–510. doi: 10.1111/ajps.12116
+
+- Abadie A, Gardeazabal J (2003) The Economic Costs of Conflict: A Case Study of the Basque Country. American economic review 93:113–132.
+
+---
+## The main idea of SCM
+In brief, SCM constructs a synthetic control by assigning weights to control units according to their similarity to the treated unit in the pretreatment period. Then, the causal effects of treatment can be obtained by calculating the discrepancy of the actual and synthetic outcomes in the post-treatment period. 
+---
+## The basic steps of SCM can be summarized as follows：
+1.	Identify the outcome and treatment according to your research question;
+2.	Identify treated unit and a set of potential control units;
+3.	Select a series of characteristics that are important in determining the outcome;
+4.	Estimate the synthetic control by assigning weights to control units according to their similarity to the treated unit in the pretreatment period;
+5.	Check the balance of characteristics between treated unit and its synthetic counterpart;
+6.	Use weighted average of the control units to create the counterfactual outcome in the post-treatment period;
+7.	Estimate the causal effects by comparing the outcomes of treated unit and its synthetic counterpart;
+8.	Use placebo tests to check the significance of the estimated causal effects;
+9.	Use leave-one-out tests to check the robustness of the estimated causal effects.
+---
+# Treated unit and controls
+Treated: Indonesia
+
+Controls:
+25 countries remain non-democratic from 1980 to 2010, namely, Algeria, Bahrain, Cameroon, China, Congo, Democratic Republic of the Congo, Cote d'Ivoire, Egypt, Gabon, Haiti, Iran, Iraq, Jordan, Kuwait, Malaysia, Morocco, Myanmar, Qatar, Singapore, Syria, Tanzania, Tunisia, United Arab Emirates, Vietnam and Zimbabwe. These non-democratic countries are used as controls. 
+
+---
+##  Table 1 The definition of variables
+```{r echo=FALSE}
+
+load('/Users/maoyimin/我的数据/rworkplace/tab1.Rdata')
+DT::datatable(tab1,rownames = FALSE,
+              options = list(pageLength=5))
+```
+---
+class: center middle
+# Results and discussion
+---
+## Table 2 Synthetic weights for Indonesia
+```{r echo=FALSE}
+load('/Users/maoyimin/我的数据/rworkplace/tab2.Rdata')
+DT::datatable(tab2,rownames = FALSE,
+              options = list(pageLength=8))
+```
+
+---
+## Table 3 Balancing properties
+```{r echo=FALSE}
+load('/Users/maoyimin/我的数据/rworkplace/tab3.Rdata')
+DT::datatable(tab3,rownames = FALSE,
+              options = list(pageLength=5))
+```
+
+---
+class: center middle
+## Fig. 1 The gap of carbon intensity between actual and synthetic Indonesia
+
+![](/Users/maoyimin/我的数据/rworkplace/fig/Fig1.png)
+---
+## Basic result
+
+The average gap of carbon intensity during these 12 years is 0.24, which suggests that democratic transition in Indonesia increases nearly 0.24 kg CO2 emissions kg per constant 2005 US$ of GDP, a rise of approximately 25.33%. 
+
+
+---
+class: center middle
+## Fig. 2 The placebo tests of estimated causal effects
+
+![](/Users/maoyimin/我的数据/rworkplace/fig/Fig2.png)
+
+---
+class: center middle
+## Fig. 3 Robustness check with leave-one-out tests
+
+
+![](/Users/maoyimin/我的数据/rworkplace/fig/Fig3.png)
+---
+# Discussion
+First, although the causal effect of democratic transition on carbon intensity is negative, this result does indicate that the type of political regime, which has been overlooked by those environment and energy economists, play an important role in the change trajectory of carbon intensity in Indonesia. 
+
+It will be meaningful to explore carbon intensity reduction from the environmental politics perspective. 
+
+---
+# Discussion
+Second, as Table 3 shows, the pre-transition Indonesia features poor quality of government and low level of political stability, with the value much lower than the average level of 25 non-democratic countries, indicating that the capacities of state are relatively weak. 
+-  Fukuyama(2014) argues that state capacities and democracy are mutually supportive and democratization may be destructive without being supported by relatively strong state. 
+-  Fukuoka(2013a; 2013b) finds that democratization leads Indonesia to “oligarchy” rather than “liberty”, which facilitates a decentralized patronage networks and redistributing spoils within the state towards elites that had been excluded from Suharto's inner circle. 
+
+Therefore, lack of state capacities may lead democratic transition to be harmful to the environment. 
+
+---
+# Discussion
+Third, the post-transition period in this study is 12 years, which is relative short, so it may not capture the lagged effects of regime change. 
+-   For example, Policardo(2015) finds the beneficial effects of democracy on the environment are lagged and small, detectable only in the long run. 
+
+This study shows that the negative effect of democratic transition reaches its peak in the third year after transition, and then shows a small downward trend with fluctuation. 
+
+Therefore, the optimistic outcome is that the negative effect of democratic transition is just a short-term phenomenon, it will change to the opposite in the long run. 
+
+---
+#Conclusion
+
+-This paper examines the causal effects of democratic transition on carbon intensity by using SCM to handle selection bias. 
+
+-The main finding is that democratic transition in Indonesia increases carbon intensity by approximately 25.33%. 
+
+-The placebo tests indicate the estimated causal effects are significant and the leave-one-out check also demonstrate its robustness. 
+
+-Therefore, democratic transition intensifies, rather than mitigates, CO2 emissions in Indonesia. 
+
+---
+class: center middle
+#Thanks!
+
+
+
+
+
+

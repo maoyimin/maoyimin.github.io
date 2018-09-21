@@ -13,7 +13,7 @@ title: "Publications"
 ### 英文
 - Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research,25(28),28471–28488. [pdf](/pdf/decen2018.pdf)
 
-- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917.[pdf](/pdf/scm2018.pdf)
+- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. [pdf](/pdf/scm2018.pdf) [ppt](/slides/Mao2018espr/Presentation.html)
 
 
 ### 中文
