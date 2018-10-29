@@ -11,9 +11,9 @@ title: "Publications"
 ## 论文
 
 ### 英文
-- Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research,25(28),28471–28488. [pdf](/pdf/decen2018.pdf)
+- Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research,25(28),28471–28488. [pdf](/pdf/decen2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2846-9)
 
-- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. [pdf](/pdf/scm2018.pdf)
+- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. [pdf](/pdf/scm2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2165-1)
 
 
 ### 中文
@@ -23,7 +23,7 @@ title: "Publications"
 
 - 毛益民：《地方项目化治理的权力异化及其衍生效应》，《广东行政学院学报》，2016年第5期。
 
-- 陈国权、毛益民：《第三区域政企统合治理与集权化现象研究》，《政治学研究》，2015年第2期（人大复印资料《中国政治》2015年第7期转载）[pdf](/pdf/thirdarea2015.pdf)
+- 陈国权、毛益民：《第三区域政企统合治理与集权化现象研究》，《政治学研究》，2015年第2期（人大复印资料《中国政治》2015年第7期转载）[中文pdf](/pdf/thirdareachinese2015.pdf) [英文pdf](/pdf/thirdareaenglish2015.pdf)
 
 
 - 毛益民：《制度逻辑冲突：场域约束与管理实践》，《广东社会科学》，2014年第6期。
