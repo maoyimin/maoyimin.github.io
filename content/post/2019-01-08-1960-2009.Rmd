@@ -1,0 +1,20 @@
+---
+title: 世界各国政治变迁（1960-2009）
+author: MYM
+date: '2019-01-08'
+slug: democracy
+categories:
+  - 研究
+tags:
+  - 数据
+---
+
+```{r echo=FALSE}
+library(panelView)
+data(panelView)
+panelView(capacity,Capacity~demo,index = c('country','year'),
+          main = 'Regime change',axis.lab.gap = c(2,0),
+          theme.bw = TRUE,axis.lab = 'time',
+          legend.labs = c('Democracy','Autocracy','Missing'))
+```
+

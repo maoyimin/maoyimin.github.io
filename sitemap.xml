@@ -3,73 +3,84 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://maoyimin.github.io/post/2018/09/21/matching-for-causal-inference/</loc>
+    <loc>/post/2019/01/08/democracy/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018/09/21/matching-for-causal-inference/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/post/2018/08/29/visitingcu/</loc>
+    <loc>/post/2018/08/29/visitingcu/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/about/</loc>
+    <loc>/about/</loc>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/</loc>
+    <loc>/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>/publications/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/teaching/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/post/</loc>
-    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/projects/</loc>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/publications/</loc>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/teaching/</loc>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/tags/%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://maoyimin.github.io/tags/%E7%82%B9%E6%BB%B4%E5%BF%83%E5%BE%97/</loc>
+    <loc>/tags/%E7%82%B9%E6%BB%B4%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
+    <loc>/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6/</loc>
-    <lastmod>2018-09-21T00:00:00+00:00</lastmod>
+    <loc>/categories/%E7%A0%94%E7%A9%B6/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
