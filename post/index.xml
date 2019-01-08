@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Yimin&#39;s homepage</title>
-    <link>/post/</link>
+    <link>https://maoyimin.github.io/post/</link>
     <description>Recent content in Posts on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyimin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>因果推断的匹配方法</title>
-      <link>/post/2018/09/21/matching-for-causal-inference/</link>
+      <link>https://maoyimin.github.io/post/2018/09/21/matching-for-causal-inference/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018/09/21/matching-for-causal-inference/</guid>
+      <guid>https://maoyimin.github.io/post/2018/09/21/matching-for-causal-inference/</guid>
       <description>Basic steps for matching The following are the basic steps in performing a causal analysis using data preprocessing (Stuart, 2010)1:
 Decide on covariates for which balance must be achieved Estimate the distance measure (e.g., propensity score) Condition on the distance measure (e.g., using matching, weighting, or subclassification) Assess balance on the covariates of interest; if poor, repeat steps 2-4 Estimate the treatment effect in the conditioned sample   一些有用的R包 cobalt R package cobalt package 是一个集成了诸多匹配方法的R包，由Noah Greifer开发。使用说明</description>
     </item>
     
     <item>
       <title>哥大访学生活</title>
-      <link>/post/2018/08/29/visitingcu/</link>
+      <link>https://maoyimin.github.io/post/2018/08/29/visitingcu/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018/08/29/visitingcu/</guid>
+      <guid>https://maoyimin.github.io/post/2018/08/29/visitingcu/</guid>
       <description></description>
     </item>
     
