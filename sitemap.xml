@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/post/2018/12/05/report/</loc>
+    <lastmod>2018-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2018/09/21/matching-for-causal-inference/</loc>
     <lastmod>2018-09-21T00:00:00+00:00</lastmod>
   </url>
@@ -52,6 +57,12 @@
   
   <url>
     <loc>/teaching/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/%E5%AD%A6%E6%9C%AF%E6%8A%A5%E5%91%8A/</loc>
+    <lastmod>2018-12-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
