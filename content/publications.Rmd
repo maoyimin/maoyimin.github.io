@@ -11,31 +11,19 @@ title: "Publications"
 ## 论文
 
 ### 英文
-- Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research,25(28),28471–28488. 
+- Mao, Y. (2018). Decentralization, national context and environmental policy performance: a fuzzy set qualitative comparative analysis. Environmental Science and Pollution Research,25(28),28471–28488. [pdf](/pdf/decen2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2846-9)
 
-> This study examines the complex relationship between decentralization, national context and environment policy performance with the cross-sectional data from 118 countries. Decentralization is decomposed into three dimensions: political, fiscal and administrative. Both multiple regression analysis and fuzzy set qualitative comparative analysis are adopted. Results show that: (1) political, fiscal and administrative decentralization differ in their impacts on environmental policy performance. (2) There are multiple pathways, constituted by specific configurations of decentralization and context conditions, to high (or low) environmental policy performance. (3) High environmental policy performance occurs most often when a country is fiscally and administratively decentralized and its context is favorable, i.e. advanced economy, good governance and stringent environmental regulations. In this situation, political decentralization seems to be irrelevant to the outcome. (4) Low environmental policy performance occurs most often when a country, without the favorable context mentioned above, become fiscally centralized, regardless of whether political and administrative decentralization is present or not. This study suggests policy makers should keep in mind the contextual fit of decentralization and adopt a configurational thinking in environmental governance.
-[pdf](/pdf/decen2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2846-9)
-
-- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. 
-
-> Despite growing concern about the low-carbon economic development, little is known about the role of political institutions, democracy, or the absence thereof, in controlling carbon intensity (carbon dioxide emissions per unit of GDP). This paper estimates the causal effects of democratic transition in Indonesia on its national carbon emission intensity. The synthetic control method is adopted to handle both time-invariant and time-variant confounding heterogeneity. Results show that Indonesia’s democratic transition increases on average 0.24 kg carbon dioxide emissions per constant 2005 US dollar in the post-transition period (1999–2010), a rise of approximately 25.34%. The placebo tests indicate this causal effect is significant and the leave-one-out sensitivity check also demonstrates its robustness. The evidence of Indonesia suggests that democratic transition may serve to intensify, rather than mitigate, the emissions of carbon dioxide. Therefore, policymakers should pay more attentions to the contextual fit of democratic transition.
-[pdf](/pdf/scm2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2165-1)
+- Mao, Y. (2018). Does democratic transition reduce carbon intensity? Evidence from Indonesia using the synthetic control method. Environmental Science and Pollution Research, 25(20), 19908–19917. [pdf](/pdf/scm2018.pdf) [link](https://link.springer.com/article/10.1007%2Fs11356-018-2165-1)
 
 
 ### 中文
-- 毛益民、陈国权：《民主反腐的情境适配：一项跨国比较分析》，《经济社会体制比较》，2018年第2期。人大复印资料《政治学》2018年第6期全文转载。
-
-> 认识民主与腐败之间的复杂关系，必须关注民主与发展情境的适配性。文章基于 135 个国家2009 ～2012年的数据，借助模糊集定性比较分析考察民主、情境与腐败之间的因果关系。就单个条件而言，民主水平与腐败程度之间并不存在因果关系，而有效保护产权可使国家免于严重腐败。就组合效应而言，主要表现为:第一，同样是高民主国家，若政治稳定、经济发达且产权有效保护，能实现低腐败，而若政府规模小且产权缺乏保护，则会陷于高腐败;第二，低民主、政治不稳定且产权缺乏保护，会导致高腐败;第三，若经济落后、政府规模小且产权缺乏保护，无论民主程度高低，都会沦为高腐败。因此，在反腐败过程中，必须慎重考虑民主化的情境适配性，而法治化建设应当优先于民主化的推进。
-[pdf](/pdf/demoanticorruption2018.pdf)
+- 毛益民、陈国权：《民主反腐的情境适配：一项跨国比较分析》，《经济社会体制比较》，2018年第2期。人大复印资料《政治学》2018年第6期全文转载。[pdf](/pdf/demoanticorruption2018.pdf)
 
 - 毛益民：《腐败涉入的自我合理化：一种认知心理学分析》，《廉政文化研究》，2017年第4期。
 
 - 毛益民：《地方项目化治理的权力异化及其衍生效应》，《广东行政学院学报》，2016年第5期。
 
-- 陈国权、毛益民：《第三区域政企统合治理与集权化现象研究》，《政治学研究》，2015年第2期（人大复印资料《中国政治》2015年第7期转载）
-
-> 我国开发区、新城、新区、功能区的治理显著区别于城市治理与农村治理,形成独特的第三区域治理模式。这一模式的核心特征是政府再集权化,具体表现为政企统合,即政府与企业统合的制度安排。这种制度安排突破了国家有关法律和政策制度,与改革开放初期设定的政企分开和分权化的改革发展目标相悖。第三区域开发建设是一种大规模生产公共物品的集体行动过程,其任务属性决定了政府集权化的制度演化逻辑。第三区域集权化战略有助于优化决策和协调、保障开发资金持续投入、克服集体行动困境,进而实现生产效率的最大化。政企统合模式极大地拓展了政府在资本、组织、人员等方面的治理能力,但其治理绩效也呈现出明显的相对性,主要体现在区域经济发展、政府体制改革以及社会秩序维护三个层面。总体而言,地方政府再集权及其政企统合模式,其合理性受区域发展阶段和公共治理领域的限制,其演变方向取决于国家治理体制的变迁。
-[中文pdf](/pdf/thirdareachinese2015.pdf) [英文pdf](/pdf/thirdareaenglish2015.pdf)
+- 陈国权、毛益民：《第三区域政企统合治理与集权化现象研究》，《政治学研究》，2015年第2期（人大复印资料《中国政治》2015年第7期转载）[中文pdf](/pdf/thirdareachinese2015.pdf) [英文pdf](/pdf/thirdareaenglish2015.pdf)
 
 
 - 毛益民：《制度逻辑冲突：场域约束与管理实践》，《广东社会科学》，2014年第6期。
@@ -45,8 +33,6 @@ title: "Publications"
 - 毛益民：《治理网络、问责困境与政府元治理》，《广东行政学院学报》，2013年第5期。
 
 - 陈国权、毛益民：《腐败裂变式扩散：一种社会交换分析》，《浙江大学学报（人文社科版）》，2013年第2期（《高等学校文科学术文摘》2013年第3期转载）。
-
-> 腐败与反腐败是一个不断博弈的矛盾过程,腐败的形态在反腐败中不断演变.随着腐败产生的制度环境发生变化,当前中国腐败现象的蔓延形态呈现出“裂变式扩散”,即腐败从个体向群体甚至向整个组织扩散,从低层级按管理逻辑向高层扩散.对中国腐败裂变式扩散现象进行社会交换分析,发现其存在两种动力机制:一是内驱机制,即腐败行动者为了更安全地实现利益扩张而建构腐败关系网络；二是外驱机制,即腐败行动者受到圈子内规范约束而维护腐败关系网络.腐败关系网络的生产和再生产导致了腐败裂变式扩散.但腐败的裂变式扩散是一个通过策略实施耦合上述两种动力机制的复杂过程.腐败行动者通过风险评估和试探交换策略来寻找腐败交换对象,通过拟亲化和服务渗透策略使自身进入“自家人”圈子,通过共赢共溃策略来增强腐败群体的利益共同体意识.腐败交换秩序是上述策略实施的综合结果,这种微观社会秩序生产着支持自身运作的规范与逻辑.
 
 - 陈国权、毛益民：《道德制约权力：现实与可能》，《学术月刊》，2012 年第2期（人大复印资料《伦理学》2012年第5期全文转载）。
 
