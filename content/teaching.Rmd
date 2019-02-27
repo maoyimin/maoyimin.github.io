@@ -6,7 +6,7 @@ title: "Teaching"
 
 ### 2018-2019学年
 
-- 《城市管理学》
+- 《城市管理学》[课件](/lecture/lecture.html)
 
 - 《公共危机管理》
 
