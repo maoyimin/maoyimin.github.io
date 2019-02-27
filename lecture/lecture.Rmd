@@ -95,8 +95,8 @@ class: center, middle
 
 区域城市化水平=区域城市人口/区域总人口
 
-
 ---
+
 # 2015世界城市化进程
 ![](http://www.cupc.org.cn/uploadfile/2018/0605/20180605030156728.jpg)
 ---
@@ -109,10 +109,6 @@ class: center, middle
 - 近一半的世界城市人口居住在人口不到50万的城市中，而全球大约1/8的人口居住在33个拥有超过1000万居民的特大城市。至2030年，全世界预计将有43个特大城市，拥有超过1000万人口，其中大部分位于发展中国家和地区。
 
 - 东京是世界上最大的城市，拥有3700万人口聚集，其次是新德里，有2900万人口，上海2600万，墨西哥城及圣保罗大约有2200万居民。目前，开罗、孟买、北京和达卡也有近2000万居民。
-
----
-# 一些城市的新老照片对比
-<iframe width="1000" height="500" src="https://sv.baidu.com/videoui/page/videoland?pd=bjh&context={%22nid%22:%229750425926636241452%22,%22sourceFrom%22:%22bjh%22}&fr=bjhauthor&type=video" frameborder="0" allowfullscreen></iframe>
 
 ---
 # 超级城市：东京
