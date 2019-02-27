@@ -244,6 +244,8 @@ class: center, middle
 
 ---
 
+class: inverse, center, middle
 
+# 第二讲 
 
 
