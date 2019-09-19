@@ -179,7 +179,7 @@ include_graphics("charttype.png")
 #做个计算题
 5+5+7+9+10
 
-# 生成一百个数字
+# 生成十个数字
 rnorm(10,mean = 0,sd = 1)
 ```
 --

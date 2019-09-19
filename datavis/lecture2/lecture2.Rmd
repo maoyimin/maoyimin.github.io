@@ -1,0 +1,413 @@
+---
+title: "零基础学数据可视化"
+subtitle: "第二讲　数据处理基础"
+author: "毛益民　副教授"
+institute: "浙江工商大学公共管理学院"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [zh-CN.css,custom.css,xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(icon)
+library(DT)
+library(knitr)
+library(tibble)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+duo_accent(primary_color = "#006747", 
+           secondary_color = "#CFC493",
+           header_h1_font_size = '40px',
+           header_h2_font_size = '30px',
+           header_h3_font_size = '20px',
+           title_slide_background_image ='数据动态.gif')
+```
+# 数据类型
+.pull-left[
+- 数值型 
+```{r}
+a <- 1; is.numeric(a) 
+```
+- 字符型
+```{r}
+b <- 'peter'; nchar(b)
+```
+]
+--
+.pull-right[
+- 日期型
+```{r}
+c <- as.Date('2019-09-16')
+class(c)
+```
+- 逻辑型
+```{r}
+e <- TRUE
+class(e)
+```
+]
+
+
+---
+# 数据结构
+## 向量(vector)
+> - 向量是用于存储数值型、字符型或逻辑型数据的一维数组。
+- 执行组合功能的函数*c()*可用来创建向量。
+
+```{r}
+c(2,4,6);seq(2,4,by=0.5);rep(1:3,time=3)
+```
+--
+### `r fa('bell')`.red[向量需要定义，否则结果会很残忍]
+输入：lalala 
+
+输出：找不到对象 'lalala'
+
+---
+## 向量的处理
+- 向量的排序
+```{r}
+lalala <- c(1,3,5,2,4)
+order <- sort(lalala,index.return=TRUE,decreasing = TRUE)
+order
+```
+--
+- 向量的唯一值
+```{r}
+xing <- c('zhang','li','wang','mao','zhang','wang')
+unique(xing)
+```
+---
+- 向量的离散化
+```{r}
+num <- c(10,5,4,7,6,1,4,3,8,9,2)
+cut_num <- cut(num,breaks = c(0,3,6,9,11),
+               labels = c('0-3','3-6','6-9','>9'),right=TRUE)
+cut_num
+```
+--
+- 向量的索引
+```{r}
+x <- c(1,2,3,4,5)
+x[3];x[x>3]
+```
+---
+# 不难不难，甚至有点轻松 `r fa('smile')`
+```{r,fig.align='center',echo=FALSE,out.width='75%'}
+include_graphics('jay.jpg')
+```
+---
+# 数据结构
+## 因子(factor)
+> 因子可以看成是包含了额外信息的向量，这额外的信息就是不同的类别，称之为说（level)
+
+```{r}
+cut <- c('差','一般','良好','优秀')
+as.factor(cut)
+```
+
+---
+#数据结构
+## 数据框(data.frame)
+> 
+- 数据框是一种表格结构，类似于EXCEL中的数据表。
+- 数据框是由多个向量构成的，每个向量的长度相同。
+
+```{r}
+# 数据框的创建
+df <- data.frame(
+  x=c('a','b','c'),
+  y=1:3,
+  z=c(2,5,3)
+)
+df
+```
+---
+# 记了这么多，先喘口气
+```{r,fig.align='center',echo=FALSE}
+include_graphics('土拨鼠.gif')
+```
+
+--
+
+## .red[然后，继续。。。]
+
+---
+# 请创建如下数据框
+```{r echo=FALSE}
+df <- data.frame(
+  name=c('张三','李四','王五','赵六'),
+  code=1:4,
+  score=c(80,57,66,78),
+  level=c('B','C','C','B')
+)
+datatable(df,
+  fillContainer = FALSE, options = list(pageLength = 4))
+```
+---
+# 数据属性
+.content-box-green[类别型：不同类型的数据
+- 无序：比如性别（男或女）
+- 有序：不太喜欢、喜欢、非常喜欢
+]
+
+.content-box-yellow[数值型：比如成绩
+]
+
+--
+## 成绩划分等级
+- 优秀：90分及以上
+- 良好：80-89
+- 中等：70-79
+- 合格：60-69
+- 不合格：0-59
+
+---
+# 数据的导入与导出
+## csv文件
+> mydata <- read.csv('data.csv',sep=',',na.strings = 'NA',stringsAsFactors = FALSE)
+
+> write.csv(mydata,file='file.csv)
+
+## excel文件
+> mydata <- read.xlsx('data.xlsx',sheetindex=1)
+
+> write.xlsx(mydata,file='file.xlsx',sheetName='mysheetname')
+
+当然，可以在窗口上操作
+
+---
+# 记了这么多，再喘口气
+```{r ,fig.align='center',echo=FALSE}
+include_graphics('土拨鼠.gif')
+```
+
+--
+## .red[然后，再继续。。。]
+---
+# 控制语句
+.blockquote[理解 if...else...和函数ifelse的用法]
+
+.content-box-red[
+if (条件) {
+  执行语句
+  }  else{
+    其它执行语句 }
+.pull-left[
+
+```{r}
+#例子
+i <- 5
+if(i>3){
+  print('yes') 
+} else {
+  print('no')
+}
+```
+
+]
+.pull-right[
+```{r}
+#例子
+ifelse(i>3,
+       'yes',
+       'no')
+
+```
+]
+]
+---
+## for 循环语句
+> for (变量 in 向量) { 执行语句}
+
+.content-box-red[
+```{r}
+#例子
+for(i in 1:4){
+  j <- i+10
+  print(j)
+}
+
+```
+]
+
+---
+# 让我们再往前走一步
+> 基于数据框的操作：表格的转换与整理
+
+.content-box-yellow[
+- 这部分挺好玩，也很有用哦！
+- 先生成1个数据框文件
+```{r}
+mydf <- data.frame(x=c('A','B','C'),
+                 '2010'=c(1,3,4),
+                 '2011'=c(3,5,2),
+                 check.names = FALSE)
+mydf
+```
+
+]
+---
+# tidyr包
+> 两个非常有用的函数。
+- gather()：将短数据变成长数据。
+- spread(): 将长数据变成短数据
+
+```{r}
+df_gather <- tidyr::gather(mydf,year,value,-x)
+df_gather
+```
+---
+# 如何恢复原状
+```{r}
+# 请用spread（）
+df_spread <- tidyr::spread(df_gather,year,value)
+df_spread
+```
+--
+>请整理一下全国各省近10年的GDP数据
+- [.red[数据来源（点击）]](http://data.stats.gov.cn/index.htm)
+- 由短数据变成长数据
+---
+# 变量的变换
+> 
+- 着眼于df_gather
+- 将里面的value都扩大两倍
+
+```{r}
+df_gather2 <- dplyr::mutate(df_gather,
+                            value2=value*2)
+df_gather2
+```
+---
+# 练习一下
+> 操作：对于df_gather，请将2011年的value扩大3倍，其它value保留原值
+
+.pull-left[
+```{r}
+df_gather
+```
+]
+.pull-right[
+```{r , fig.align='center',out.width='150%',echo=FALSE}
+include_graphics('代码成功.gif')
+```
+]
+---
+# 代码与结果
+
+```{r}
+df_gather$value2 <- ifelse(df_gather$year=='2011',
+                           df_gather$value*3,
+                           df_gather$value)
+df_gather
+```
+
+
+---
+#也可以用dplyr包
+```{r}
+df_gather %>% 
+  mutate(value3=ifelse(year=='2011',
+                           value*3,
+                           value))
+```
+
+---
+# 表格的拼接
+> rbind() & cbind()
+
+```{r}
+df1 <- data.frame(x=c('a','b','c'),y=1:3)
+df1
+df2 <- data.frame(m=c('A','B','C'),n=6:8)
+df2
+```
+---
+## 横向拼接
+
+```{r}
+df_cbind <- cbind(df1,df2)
+df_cbind
+```
+
+## 纵向拼接
+
+```{r}
+df3 <- data.frame(x=c('lala','dada'),y=2:3)
+df_rbind <- rbind(df1,df3)
+df_rbind
+```
+---
+# 表格的融合
+```{r}
+df1
+df4 <- data.frame(x=c('a','c','b'),
+                  z=c('好','不好','中等'))
+df4
+```
+---
+# 使用merge进行融合
+
+```{r}
+df_merge <- merge(df1,df4,by='x')
+df_merge
+```
+
+> 当然，练习是少不了的
+
+---
+# 也说不出为什么，就是想喊上一嗓子
+```{r ,fig.align='center',echo=FALSE}
+include_graphics('土拨鼠.gif')
+```
+
+---
+# 分组计算均值
+> dplyr包 group_by 函数
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(mean)
+```
+---
+# 分组列出最大值
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(max)
+```
+---
+# 数据整理就介绍到这里
+
+> 
+- 师傅领进门，修行靠个人。
+- 其它函数请自己去学习吧
+- 下次我们开始学习绘图。。。
+
+```{r echo=FALSE, fig.align="center"}
+include_graphics("土拨鼠冲澡.gif")
+```
+
+
+---
+class:center middle
+background-image: url("lastimage.jpg")
+background-size: cover# .white[谢谢聆听!]
+
+## .red[记得回去以后多多练习哦！]
+
+### .white[毛益民]
+### .white[浙江工商大学公共管理学院]

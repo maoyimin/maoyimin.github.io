@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>零基础学数据可视化</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="毛益民　副教授" />
+    <meta name="date" content="2019-09-18" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding/datatables.js"></script>
+    <link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link rel="stylesheet" href="zh-CN.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 零基础学数据可视化
+## 第二讲　数据处理基础
+### 毛益民　副教授
+### 浙江工商大学公共管理学院
+### 2019-09-18
+
+---
+
+
+
+
+# 数据类型
+.pull-left[
+- 数值型 
+
+```r
+a &lt;- 1; is.numeric(a) 
+```
+
+```
+## [1] TRUE
+```
+- 字符型
+
+```r
+b &lt;- 'peter'; nchar(b)
+```
+
+```
+## [1] 5
+```
+]
+--
+.pull-right[
+- 日期型
+
+```r
+c &lt;- as.Date('2019-09-16')
+class(c)
+```
+
+```
+## [1] "Date"
+```
+- 逻辑型
+
+```r
+e &lt;- TRUE
+class(e)
+```
+
+```
+## [1] "logical"
+```
+]
+
+
+---
+# 数据结构
+## 向量(vector)
+&gt; - 向量是用于存储数值型、字符型或逻辑型数据的一维数组。
+- 执行组合功能的函数*c()*可用来创建向量。
+
+
+```r
+c(2,4,6);seq(2,4,by=0.5);rep(1:3,time=3)
+```
+
+```
+## [1] 2 4 6
+```
+
+```
+## [1] 2.0 2.5 3.0 3.5 4.0
+```
+
+```
+## [1] 1 2 3 1 2 3 1 2 3
+```
+--
+### <i class="fas  fa-bell "></i>.red[向量需要定义，否则结果会很残忍]
+输入：lalala 
+
+输出：找不到对象 'lalala'
+
+---
+## 向量的处理
+- 向量的排序
+
+```r
+lalala &lt;- c(1,3,5,2,4)
+order &lt;- sort(lalala,index.return=TRUE,decreasing = TRUE)
+order
+```
+
+```
+## $x
+## [1] 5 4 3 2 1
+## 
+## $ix
+## [1] 3 5 2 4 1
+```
+--
+- 向量的唯一值
+
+```r
+xing &lt;- c('zhang','li','wang','mao','zhang','wang')
+unique(xing)
+```
+
+```
+## [1] "zhang" "li"    "wang"  "mao"
+```
+---
+- 向量的离散化
+
+```r
+num &lt;- c(10,5,4,7,6,1,4,3,8,9,2)
+cut_num &lt;- cut(num,breaks = c(0,3,6,9,11),
+               labels = c('0-3','3-6','6-9','&gt;9'),right=TRUE)
+cut_num
+```
+
+```
+##  [1] &gt;9  3-6 3-6 6-9 3-6 0-3 3-6 0-3 6-9 6-9 0-3
+## Levels: 0-3 3-6 6-9 &gt;9
+```
+--
+- 向量的索引
+
+```r
+x &lt;- c(1,2,3,4,5)
+x[3];x[x&gt;3]
+```
+
+```
+## [1] 3
+```
+
+```
+## [1] 4 5
+```
+---
+# 不难不难，甚至有点轻松 <i class="fas  fa-smile "></i>
+&lt;img src="jay.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+---
+# 数据结构
+## 因子(factor)
+&gt; 因子可以看成是包含了额外信息的向量，这额外的信息就是不同的类别，称之为说（level)
+
+
+```r
+cut &lt;- c('差','一般','良好','优秀')
+as.factor(cut)
+```
+
+```
+## [1] 差   一般 良好 优秀
+## Levels: 差 良好 一般 优秀
+```
+
+---
+#数据结构
+## 数据框(data.frame)
+&gt; 
+- 数据框是一种表格结构，类似于EXCEL中的数据表。
+- 数据框是由多个向量构成的，每个向量的长度相同。
+
+
+```r
+# 数据框的创建
+df &lt;- data.frame(
+  x=c('a','b','c'),
+  y=1:3,
+  z=c(2,5,3)
+)
+df
+```
+
+```
+##   x y z
+## 1 a 1 2
+## 2 b 2 5
+## 3 c 3 3
+```
+---
+# 记了这么多，先喘口气
+&lt;img src="土拨鼠.gif" style="display: block; margin: auto;" /&gt;
+
+--
+
+## .red[然后，继续。。。]
+
+---
+# 请创建如下数据框
+<div id="htmlwidget-d81f34323a93fadabc63" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d81f34323a93fadabc63">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4"],["张三","李四","王五","赵六"],[1,2,3,4],[80,57,66,78],["B","C","C","B"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>name<\/th>\n      <th>code<\/th>\n      <th>score<\/th>\n      <th>level<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+---
+# 数据属性
+.content-box-green[类别型：不同类型的数据
+- 无序：比如性别（男或女）
+- 有序：不太喜欢、喜欢、非常喜欢
+]
+
+.content-box-yellow[数值型：比如成绩
+]
+
+--
+## 成绩划分等级
+- 优秀：90分及以上
+- 良好：80-89
+- 中等：70-79
+- 合格：60-69
+- 不合格：0-59
+
+---
+# 数据的导入与导出
+## csv文件
+&gt; mydata &lt;- read.csv('data.csv',sep=',',na.strings = 'NA',stringsAsFactors = FALSE)
+
+&gt; write.csv(mydata,file='file.csv)
+
+## excel文件
+&gt; mydata &lt;- read.xlsx('data.xlsx',sheetindex=1)
+
+&gt; write.xlsx(mydata,file='file.xlsx',sheetName='mysheetname')
+
+当然，可以在窗口上操作
+
+---
+# 记了这么多，再喘口气
+&lt;img src="土拨鼠.gif" style="display: block; margin: auto;" /&gt;
+
+--
+## .red[然后，再继续。。。]
+---
+# 控制语句
+.blockquote[理解 if...else...和函数ifelse的用法]
+
+.content-box-red[
+if (条件) {
+  执行语句
+  }  else{
+    其它执行语句 }
+.pull-left[
+
+
+```r
+#例子
+i &lt;- 5
+if(i&gt;3){
+  print('yes') 
+} else {
+  print('no')
+}
+```
+
+```
+## [1] "yes"
+```
+
+]
+.pull-right[
+
+```r
+#例子
+ifelse(i&gt;3,
+       'yes',
+       'no')
+```
+
+```
+## [1] "yes"
+```
+]
+]
+---
+## for 循环语句
+&gt; for (变量 in 向量) { 执行语句}
+
+.content-box-red[
+
+```r
+#例子
+for(i in 1:4){
+  j &lt;- i+10
+  print(j)
+}
+```
+
+```
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+```
+]
+
+---
+# 让我们再往前走一步
+&gt; 基于数据框的操作：表格的转换与整理
+
+.content-box-yellow[
+- 这部分挺好玩，也很有用哦！
+- 先生成1个数据框文件
+
+```r
+mydf &lt;- data.frame(x=c('A','B','C'),
+                 '2010'=c(1,3,4),
+                 '2011'=c(3,5,2),
+                 check.names = FALSE)
+mydf
+```
+
+```
+##   x 2010 2011
+## 1 A    1    3
+## 2 B    3    5
+## 3 C    4    2
+```
+
+]
+---
+# tidyr包
+&gt; 两个非常有用的函数。
+- gather()：将短数据变成长数据。
+- spread(): 将长数据变成短数据
+
+
+```r
+df_gather &lt;- tidyr::gather(mydf,year,value,-x)
+df_gather
+```
+
+```
+##   x year value
+## 1 A 2010     1
+## 2 B 2010     3
+## 3 C 2010     4
+## 4 A 2011     3
+## 5 B 2011     5
+## 6 C 2011     2
+```
+---
+# 如何恢复原状
+
+```r
+# 请用spread（）
+df_spread &lt;- tidyr::spread(df_gather,year,value)
+df_spread
+```
+
+```
+##   x 2010 2011
+## 1 A    1    3
+## 2 B    3    5
+## 3 C    4    2
+```
+--
+&gt;请整理一下全国各省近10年的GDP数据
+- [.red[数据来源（点击）]](http://data.stats.gov.cn/index.htm)
+- 由短数据变成长数据
+---
+# 变量的变换
+&gt; 
+- 着眼于df_gather
+- 将里面的value都扩大两倍
+
+
+```r
+df_gather2 &lt;- dplyr::mutate(df_gather,
+                            value2=value*2)
+df_gather2
+```
+
+```
+##   x year value value2
+## 1 A 2010     1      2
+## 2 B 2010     3      6
+## 3 C 2010     4      8
+## 4 A 2011     3      6
+## 5 B 2011     5     10
+## 6 C 2011     2      4
+```
+---
+# 练习一下
+&gt; 操作：对于df_gather，请将2011年的value扩大3倍，其它value保留原值
+
+.pull-left[
+
+```r
+df_gather
+```
+
+```
+##   x year value
+## 1 A 2010     1
+## 2 B 2010     3
+## 3 C 2010     4
+## 4 A 2011     3
+## 5 B 2011     5
+## 6 C 2011     2
+```
+]
+.pull-right[
+&lt;img src="代码成功.gif" width="150%" style="display: block; margin: auto;" /&gt;
+]
+---
+# 代码与结果
+
+
+```r
+df_gather$value2 &lt;- ifelse(df_gather$year=='2011',
+                           df_gather$value*3,
+                           df_gather$value)
+df_gather
+```
+
+```
+##   x year value value2
+## 1 A 2010     1      1
+## 2 B 2010     3      3
+## 3 C 2010     4      4
+## 4 A 2011     3      9
+## 5 B 2011     5     15
+## 6 C 2011     2      6
+```
+
+
+---
+#也可以用dplyr包
+
+```r
+df_gather %&gt;% 
+  mutate(value3=ifelse(year=='2011',
+                           value*3,
+                           value))
+```
+
+```
+##   x year value value2 value3
+## 1 A 2010     1      1      1
+## 2 B 2010     3      3      3
+## 3 C 2010     4      4      4
+## 4 A 2011     3      9      9
+## 5 B 2011     5     15     15
+## 6 C 2011     2      6      6
+```
+
+---
+# 表格的拼接
+&gt; rbind() &amp; cbind()
+
+
+```r
+df1 &lt;- data.frame(x=c('a','b','c'),y=1:3)
+df1
+```
+
+```
+##   x y
+## 1 a 1
+## 2 b 2
+## 3 c 3
+```
+
+```r
+df2 &lt;- data.frame(m=c('A','B','C'),n=6:8)
+df2
+```
+
+```
+##   m n
+## 1 A 6
+## 2 B 7
+## 3 C 8
+```
+---
+## 横向拼接
+
+
+```r
+df_cbind &lt;- cbind(df1,df2)
+df_cbind
+```
+
+```
+##   x y m n
+## 1 a 1 A 6
+## 2 b 2 B 7
+## 3 c 3 C 8
+```
+
+## 纵向拼接
+
+
+```r
+df3 &lt;- data.frame(x=c('lala','dada'),y=2:3)
+df_rbind &lt;- rbind(df1,df3)
+df_rbind
+```
+
+```
+##      x y
+## 1    a 1
+## 2    b 2
+## 3    c 3
+## 4 lala 2
+## 5 dada 3
+```
+---
+# 表格的融合
+
+```r
+df1
+```
+
+```
+##   x y
+## 1 a 1
+## 2 b 2
+## 3 c 3
+```
+
+```r
+df4 &lt;- data.frame(x=c('a','c','b'),
+                  z=c('好','不好','中等'))
+df4
+```
+
+```
+##   x    z
+## 1 a   好
+## 2 c 不好
+## 3 b 中等
+```
+---
+# 使用merge进行融合
+
+
+```r
+df_merge &lt;- merge(df1,df4,by='x')
+df_merge
+```
+
+```
+##   x y    z
+## 1 a 1   好
+## 2 b 2 中等
+## 3 c 3 不好
+```
+
+&gt; 当然，练习是少不了的
+
+---
+# 也说不出为什么，就是想喊上一嗓子
+&lt;img src="土拨鼠.gif" style="display: block; margin: auto;" /&gt;
+
+---
+# 分组计算均值
+&gt; dplyr包 group_by 函数
+
+
+```r
+iris %&gt;% 
+  group_by(Species) %&gt;% 
+  summarise_all(mean)
+```
+
+```
+## # A tibble: 3 x 5
+##   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+##   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1 setosa             5.01        3.43         1.46       0.246
+## 2 versicolor         5.94        2.77         4.26       1.33 
+## 3 virginica          6.59        2.97         5.55       2.03
+```
+---
+# 分组列出最大值
+
+```r
+iris %&gt;% 
+  group_by(Species) %&gt;% 
+  summarise_all(max)
+```
+
+```
+## # A tibble: 3 x 5
+##   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+##   &lt;fct&gt;             &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1 setosa              5.8         4.4          1.9         0.6
+## 2 versicolor          7           3.4          5.1         1.8
+## 3 virginica           7.9         3.8          6.9         2.5
+```
+---
+# 数据整理就介绍到这里
+
+&gt; 
+- 师傅领进门，修行靠个人。
+- 其它函数请自己去学习吧
+- 下次我们开始学习绘图。。。
+
+&lt;img src="土拨鼠冲澡.gif" style="display: block; margin: auto;" /&gt;
+
+
+---
+class:center middle
+background-image: url("lastimage.jpg")
+background-size: cover# .white[谢谢聆听!]
+
+## .red[记得回去以后多多练习哦！]
+
+### .white[毛益民]
+### .white[浙江工商大学公共管理学院]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
