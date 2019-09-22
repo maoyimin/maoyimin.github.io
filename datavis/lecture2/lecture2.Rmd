@@ -1,6 +1,6 @@
 ---
 title: "零基础学数据可视化"
-subtitle: "第二讲　数据处理基础"
+subtitle: "第2&3讲　数据处理基础"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"
 date: '`r Sys.Date()`'
@@ -33,6 +33,39 @@ duo_accent(primary_color = "#006747",
            header_h3_font_size = '20px',
            title_slide_background_image ='数据动态.gif')
 ```
+
+# 一些英文单词
+.pull-left[
+- sequence
+- replicate
+- merge
+- combine
+- gather
+- spread
+- row
+- column
+- bind
+- head
+- tail
+]
+
+.pull-right[
+- mutate
+- select
+- filter
+- subset
+- plot
+- figure
+- graph
+- layer
+- summary
+- character
+- numeric
+- factor
+]
+
+
+---
 # 数据类型
 .pull-left[
 - 数值型 
