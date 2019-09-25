@@ -292,12 +292,23 @@ mydf
 
 ]
 ---
-# tidyr包
-> 两个非常有用的函数。
-- gather()：将短数据变成长数据。
-- spread(): 将长数据变成短数据
+# tidyr包 两个非常有用的函数。
+.content-box-green[gather()：将短数据变成长数据]  .content-box-red[spread(): 将长数据变成短数据]
+
+```{r echo=FALSE,out.width='80%'}
+include_graphics('original-wide-long.png')
+```
+---
+# 动态过程
+```{r echo=FALSE,out.width='75%',fig.align='center'}
+include_graphics('tidyr-spread-gather.gif')
+```
+
+---
+# 练习一下
 
 ```{r}
+mydf
 df_gather <- tidyr::gather(mydf,year,value,-x)
 df_gather
 ```
