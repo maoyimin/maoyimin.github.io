@@ -1,6 +1,6 @@
 ---
 title: "零基础学数据可视化"
-subtitle: "第二、三讲　数据处理基础"
+subtitle: "二、数据处理基础"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"
 date: '`r Sys.Date()`'
@@ -433,6 +433,55 @@ iris %>%
   group_by(Species) %>% 
   summarise_all(max)
 ```
+---
+# 综合练习（看看你真的会了没有？）
+
+```{r include=FALSE}
+students <- readxl::read_xls("students.xls")
+scores <- readxl::read_xls("scores.xls")
+```
+为了方便大家练习，且对数据有很好的代入感，我构造了两份数据：
+
+
+> 练习数据，点击即可下载：  
+1. 学生名单，包括班级（class)、姓名（name)、以及性别(gender)。下载 [students.xls](/datavis/data/students.xls)  
+2. 考试成绩，包括姓名(name)以及各科成绩，即语文(chinese)、数学(math)、英语(english)、物理(physics)、化学(chemistry)、生物(biology)。下载 [scores.xls](/datavis/data/scores.xls)
+---
+# 让我们先来浏览一下数据内容：
+学生名单（为了逼真，我还起了396个名字，可见用心良苦！`r icon::fa("heart")`）
+
+```{r echo=FALSE}
+datatable(students,
+  fillContainer = FALSE, options = list(pageLength = 6))
+```
+---
+# 让我们先来浏览一下数据内容：
+考试成绩
+
+```{r echo=FALSE}
+datatable(scores,
+  fillContainer = FALSE, options = list(pageLength = 6))
+```
+---
+# 操作任务
+
+.content-box-yellow[
+
+1. 请列出总分最高分和最低分（姓名和分数）
+
+2. 请列出各科成绩最高分的学生（姓名和分数）
+
+3. 请计算各科及格率（60分为及格线）
+
+4. 请按班级分别计算各科平均成绩
+
+5. 请列出各个班级总分最高和最低的学生（姓名和分数）
+
+6. 请评价各个班级的学习成绩状况
+
+]
+
+
 ---
 # 数据整理就介绍到这里
 
