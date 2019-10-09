@@ -481,6 +481,7 @@ datatable(scores,
 
 ]
 
+> 每完成一步，请举手示意。我要记录一下，以示表扬。
 
 ---
 # 数据整理就介绍到这里
@@ -488,7 +489,7 @@ datatable(scores,
 > 
 - 师傅领进门，修行靠个人。
 - 其它函数请自己去学习吧
-- 下次我们开始学习绘图。。。
+- 接下来我们开始学习绘图。。。
 
 ```{r echo=FALSE, fig.align="center"}
 include_graphics("土拨鼠冲澡.gif")
