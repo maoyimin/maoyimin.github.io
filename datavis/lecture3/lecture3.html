@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>零基础学数据可视化</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="毛益民　副教授" />
+    <meta name="date" content="2019-10-09" />
+    <link rel="stylesheet" href="zh-CN.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 零基础学数据可视化
+## 三、基础绘图
+### 毛益民　副教授
+### 浙江工商大学公共管理学院
+### 2019-10-09
+
+---
+
+
+
+
+# 基础绘图
+&gt; 一图胜千言，而R可谓是一个惊艳的图形构建平台。你可以通过逐条输入语句构建图形，逐步完善图形特征，直到得到想要的效果。
+
+
+```r
+head(mtcars)
+```
+
+```
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+```
+
+---
+# 使用图形
+
+
+```r
+attach(mtcars)
+plot(wt, mpg)
+#abline(lm(mpg~wt))
+title("Regression of MPG on Weight")
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-2-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+```r
+detach(mtcars)
+```
+---
+# 使用图形
+
+
+```r
+attach(mtcars)
+plot(wt, mpg)
+abline(lm(mpg~wt),col='red')
+title("Regression of MPG on Weight")
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-3-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+```r
+detach(mtcars)
+```
+---
+# 一个简单的例子
+
+让我们虚拟一个数据，它描述了病人对两种药物五个剂量水平上的响应情况。
+
+
+```r
+dose  &lt;- c(20, 30, 40, 45, 60)
+drugA &lt;- c(16, 20, 27, 40, 60)
+drugB &lt;- c(15, 18, 25, 31, 40)
+data.frame(dose,drugA,drugB)
+```
+
+```
+##   dose drugA drugB
+## 1   20    16    15
+## 2   30    20    18
+## 3   40    27    25
+## 4   45    40    31
+## 5   60    60    40
+```
+
+如果我们想创建一幅图，来描述药物A的剂量和响应关系的图形。
+
+&gt; plot() 登场。这是一个用于基础绘图的泛型函数。
+
+---
+
+
+```r
+plot(dose, drugA, type="b") # type='b' 表示同时绘制点和线
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+```r
+# help()
+```
+
+---
+# 图形参数
+
+
+```r
+opar &lt;- par(no.readonly=TRUE) # 复制一份当前的图形参数设置
+par(lty=2, pch=17) # 修改参数
+plot(dose, drugA, type="b") #绘图
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+```r
+par(opar) #恢复默认设置
+```
+---
+
+&gt; 你也可以直接写入plot()内
+
+
+```r
+plot(dose, drugA, type="b", lty=2, pch=17)
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+## 符号与线条
+pch: 指定绘制点时的符号  
+cex: 指定符号的大小  
+lty: 指定线的类型  
+lwd: 指定线的宽度
+
+
+```
+## Warning: package 'beginr' was built under R version 3.5.2
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+---
+## 符号与线条
+
+![](lecture3_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+---
+
+```r
+plot(dose, drugA, type="b", lty=3, lwd=3, pch=15, cex=2)
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+## 颜色
+
+
+```r
+# col: 指定颜色
+plot(dose, drugA, type="b", lty=3, lwd=3, pch=15, cex=2,col='red')
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-11-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+## 坐标轴和标题
+
+```r
+plot(dose, drugA, type="b",
+     col="red", lty=2, pch=2, lwd=2,
+     main="Clinical Trials for Drug A", #标题
+     sub="This is hypothetical data", # 副标题
+     xlab="Dosage", ylab="Drug Response", # x轴标签
+     xlim=c(0, 60), ylim=c(0, 65)) #坐标轴的尺度范围
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+## 图例和参考线
+
+
+```r
+opar &lt;- par(no.readonly=TRUE)
+par(lwd=2, cex=1.5)
+plot(dose, drugA, type="b",pch=15, lty=1, col="red", ylim=c(0, 60),
+     main="Drug A vs. Drug B",
+     xlab="Drug Dosage", ylab="Drug Response")
+lines(dose, drugB, type="b",pch=17, lty=2, col="blue")
+abline(h=c(30), lwd=1.5, lty=2, col="gray")
+legend("topleft", title="Drug Type", c("A","B"),
+       lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-13-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+```r
+par(opar)
+```
+
+---
+## 图形组合
+
+
+```r
+attach(mtcars)
+par(mfrow=c(2,2))
+plot(wt,mpg, main="Scatterplot of wt vs. mpg")
+plot(wt,disp, main="Scatterplot of wt vs. disp")
+hist(wt, main="Histogram of wt")
+boxplot(wt, main="Boxplot of wt")
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-14-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+```r
+detach(mtcars)
+```
+---
+class:center middle
+background-image: url("titleimage.jpg")
+background-size: cover
+
+
+# .white[谢谢聆听!]
+
+## .red[勤加练习，方能提高绘图效率！]
+
+### .white[毛益民]
+### .white[浙江工商大学公共管理学院]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
