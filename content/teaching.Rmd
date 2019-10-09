@@ -10,7 +10,7 @@ title: "Teaching"
 
 - 《公务员职业能力》
 
-- 《零基础学数据可视化》 [导论PPT](/datavis/lecture1/lecture1.html) [数据处理基础PPT](/datavis/lecture2/lecture2.html) 
+- 《零基础学数据可视化》 [导论PPT](/datavis/lecture1/lecture1.html) [数据处理基础PPT](/datavis/lecture2/lecture2.html) [基础绘图PPT](/datavis/lecture2/lecture3.html)
 
 ### 2018-2019学年
 
