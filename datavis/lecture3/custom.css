@@ -8,6 +8,10 @@
   color: black;
 }
 
+.orange {
+  color: orange;
+}
+
 .white {
   color: white;
 }
@@ -21,6 +25,10 @@
 }
 
 .large {
+  font-size: 150%;
+}
+
+.verylarge {
   font-size: 200%;
 }
 

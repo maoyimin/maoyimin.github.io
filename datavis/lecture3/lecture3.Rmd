@@ -32,6 +32,24 @@ duo_accent(primary_color = "#006747",
            header_h3_font_size = '20px',
            title_slide_background_image ='数据动态.gif')
 ```
+class: center
+
+# 听课感受
+
+--
+## .small[.orange[为什么了选了这门课？]]
+
+--
+## .blue[自己选的课，含着泪也要上完]
+
+--
+## .large[.black[其实课还好，就是容易掉头发]]
+
+--
+## .verylarge[.red[我已沉迷于学习！`r fa('trophy')`]]
+
+
+---
 # 基础绘图
 > 一图胜千言，而R可谓是一个惊艳的图形构建平台。你可以通过逐条输入语句构建图形，逐步完善图形特征，直到得到想要的效果。
 
@@ -170,15 +188,57 @@ boxplot(wt, main="Boxplot of wt")
 detach(mtcars)
 ```
 ---
+# 条形图 barplot
+```{r}
+barplot(1:10)
+
+```
+
+---
+# 堆叠条形图
+
+```{r}
+df <- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df[,1:2])
+```
+---
+# 分开的条形图
+```{r}
+df <- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df,beside = TRUE)
+
+```
+---
+#带图例的条形图
+
+```{r}
+df <- cbind(a=1:4,b=c(1,3,2,4))
+row.names(df) <- c('A','B','C','D')
+barplot(df,beside = TRUE,legend.text = TRUE)
+
+```
+---
+# 饼图
+```{r}
+pie(rep(1, 24), col = rainbow(24))
+```
+---
+# 带标签的饼图
+```{r,fig.align='center',out.width="60%"}
+pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+names(pie.sales) <- c("Blueberry", "Cherry",
+    "Apple", "Boston Cream", "Other", "Vanilla Cream")
+pie(pie.sales, col = c("purple", "violetred1", "green3",
+                       "cornsilk", "cyan", "white"))
+```
+
+
+---
 class:center middle
 background-image: url("titleimage.jpg")
-background-size: cover
-
-
-# .white[谢谢聆听!]
+background-size: cover# .white[谢谢聆听!]
 
 ## .red[勤加练习，方能提高绘图效率！]
 
 ### .white[毛益民]
 ### .white[浙江工商大学公共管理学院]
-

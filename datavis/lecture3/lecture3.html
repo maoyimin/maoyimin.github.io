@@ -4,7 +4,8 @@
     <title>零基础学数据可视化</title>
     <meta charset="utf-8" />
     <meta name="author" content="毛益民　副教授" />
-    <meta name="date" content="2019-10-09" />
+    <meta name="date" content="2019-10-17" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="zh-CN.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -17,13 +18,31 @@ class: center, middle, inverse, title-slide
 ## 三、基础绘图
 ### 毛益民　副教授
 ### 浙江工商大学公共管理学院
-### 2019-10-09
+### 2019-10-17
 
 ---
 
 
 
 
+class: center
+
+# 听课感受
+
+--
+## .small[.orange[为什么了选了这门课？]]
+
+--
+## .blue[自己选的课，含着泪也要上完]
+
+--
+## .large[.black[其实课还好，就是容易掉头发]]
+
+--
+## .verylarge[.red[我已沉迷于学习！<i class="fas  fa-trophy "></i>]]
+
+
+---
 # 基础绘图
 &gt; 一图胜千言，而R可谓是一个惊艳的图形构建平台。你可以通过逐条输入语句构建图形，逐步完善图形特征，直到得到想要的效果。
 
@@ -146,11 +165,6 @@ cex: 指定符号的大小
 lty: 指定线的类型  
 lwd: 指定线的宽度
 
-
-```
-## Warning: package 'beginr' was built under R version 3.5.2
-```
-
 ![](lecture3_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 ---
 ## 符号与线条
@@ -230,12 +244,70 @@ boxplot(wt, main="Boxplot of wt")
 detach(mtcars)
 ```
 ---
+# 条形图 barplot
+
+```r
+barplot(1:10)
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+---
+# 堆叠条形图
+
+
+```r
+df &lt;- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df[,1:2])
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+---
+# 分开的条形图
+
+```r
+df &lt;- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df,beside = TRUE)
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+---
+#带图例的条形图
+
+
+```r
+df &lt;- cbind(a=1:4,b=c(1,3,2,4))
+row.names(df) &lt;- c('A','B','C','D')
+barplot(df,beside = TRUE,legend.text = TRUE)
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+---
+# 饼图
+
+```r
+pie(rep(1, 24), col = rainbow(24))
+```
+
+![](lecture3_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+---
+# 带标签的饼图
+
+```r
+pie.sales &lt;- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+names(pie.sales) &lt;- c("Blueberry", "Cherry",
+    "Apple", "Boston Cream", "Other", "Vanilla Cream")
+pie(pie.sales, col = c("purple", "violetred1", "green3",
+                       "cornsilk", "cyan", "white"))
+```
+
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-20-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
 class:center middle
 background-image: url("titleimage.jpg")
-background-size: cover
-
-
-# .white[谢谢聆听!]
+background-size: cover# .white[谢谢聆听!]
 
 ## .red[勤加练习，方能提高绘图效率！]
 
