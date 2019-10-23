@@ -119,3 +119,32 @@ par(lty=2, pch=17) # 修改参数
 plot(dose, drugA, type="b") 
 plot(dose, drugB, type="l") 
 par(opar) 
+
+
+## 测验
+library(dplyr)
+library(tidyr)
+head(citydata)
+dat1 <- citydata %>% 
+  gather(year,gdp,-city) %>% 
+  filter(city=='北京'|city=='上海'|city=='广州'|city=='深圳'|city=='杭州',
+         year>=2003&year<=2017) %>% 
+  spread(city,gdp) 
+
+attach(dat1)
+par(family='STKaiti',lwd=1.5,cex=1.2)
+plot(year,北京,type='b',pch=1,lty=1,col=1,
+     xlim = c(2003,2017),ylim = c(2000,31000),
+     xlab='年份',ylab = 'GDP(亿元)',
+     main = '五个城市经济发展比较（2003-2017）')
+lines(year,上海,type='b',pch=2,lty=2,col=2)
+lines(year,广州,type='b',pch=3,lty=3,col=3)
+lines(year,深圳,type='b',pch=4,lty=4,col=4)
+lines(year,杭州,type='b',pch=5,lty=5,col=5)
+legend("topleft",c('北京','上海','广州','深圳','杭州'),
+       lty = 1:5, pch=1:5,col=1:5)
+detach(dat1)
+
+#c('bejing','guangzhou','hangzhou','shanghai','shenzhen')
+
+
