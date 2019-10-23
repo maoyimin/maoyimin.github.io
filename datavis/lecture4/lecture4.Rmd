@@ -1,0 +1,139 @@
+---
+title: "零基础学数据可视化"
+subtitle: "四、高级绘图 ggplot2"
+author: "毛益民　副教授"
+institute: "浙江工商大学公共管理学院"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [zh-CN.css,custom.css,xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(icon)
+library(DT)
+library(knitr)
+library(tibble)
+library(ggplot2)
+library(plotly)
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+duo_accent(primary_color = "#006747", 
+           secondary_color = "#CFC493",
+           header_h1_font_size = '40px',
+           header_h2_font_size = '30px',
+           header_h3_font_size = '20px',
+           title_slide_background_image ='数据动态.gif')
+```
+# ggplot2是什么？
+
+> ggplot2 是一个功能强大且灵活的R 包，由Hadley Wickham 编写，它可以生成优雅而实用的图形。ggplot2中的gg表示图形语法*（grammar of graphic）*，这是一个通过使用“语法”来绘图的图形概念。
+因其功能强大，ggplot2是下载量最高的R包之一。
+
+.pull-left[
+```{r echo=FALSE,out.width="60%",fig.align='center'}
+include_graphics('ggplot2chinese.jpg')
+```
+]
+
+.pull-right[
+```{r echo=FALSE,out.width="120%",fig.align='center'}
+include_graphics('hadley.png')
+```
+]
+---
+# ggplot2 图形语法
+
+.content-box-green[
+（1）采用图层的设计方式，有利于结构化思维实现数据可视化。有明确的起始（ggplot()开始）与终止，图层之间的叠加是靠“+”实现的，越往后，其图层越在上方。通常一条geom_xxx()函数
+或stat_xxx函数可以绘制一个图层。
+]
+
+.content-box-red[
+（2）将表征数据和图形细节分开，能快速将图形表现出来，使创造性的绘图更加容易实现。而且通过stat_xxx()函数将常见的统计变换融入绘图中。
+]
+
+.content-box-purple[
+（3）图形美观，扩展包（extension package）丰富，有专门调整颜色（color）、字体（font）和主
+题（theme）等辅助包。可以帮助用户快读定制个性化的图表。
+]
+
+*参考文献：张杰：《R语言 数据可视化之美》,电子工业出版社，2019年。*
+---
+# 语法框架
+```{r echo=FALSE,fig.align='center'}
+include_graphics('grammar1.png')
+```
+
+---
+# 代码使用
+```{r echo=FALSE,out.width="120%",fig.align='center'}
+include_graphics('grammar2.png')
+```
+---
+## 必需的图表输入信息：
+.content-box-red[
+（1）ggplot()：底层绘图函数。DATA 为数据集，主要是数据框（data.frame）格式的数据集；
+MAPPINGS 变量的视觉通道映射，用来表示变量x 和y，还可以用来控制颜色（color）、大小（size）
+或形状（shape）等视觉通道；STAT 表示统计变换，与stat_xxx相对应，默认为"identity"（无数据
+变换）；POSITION 表示绘图数据系列的位置调整，默认为"identity"（无位置调整）。
+]
+
+.content-box-purple[
+（2）geom_xxx() | stat_xxx()：几何图层或统计变换，比如常见的geom_point()（散点图）、
+geom_bar()（柱形图）、geom_histogram()（统计直方图）、geom_ boxplot()（箱形图）、geom_line()（折线图）等。我们通常使用geom_xxx()函数就可以绘制大部分图表，有时候通过设定stat 参数可以先实现统计变换。
+]
+
+---
+## 可选的图表输入信息：
+>（1）scale_xxx()：度量调整，调整具体的度量，包括颜色（color）、大小（size）或形状（shape）
+等，跟MAPPINGS 的映射变量相对应；
+
+>（2）coord_xxx()：坐标变换，默认笛卡儿坐标系，还包括极坐标系、地理空间坐标系等；
+
+>（3）facet_xxx()：分面系统，将某个变量进行分面变换，包括按行、列和网格等形式分面绘图。
+
+>（4）guides()：图例调整，主要包括连续型和离散型两种类型的图例。
+
+>（5）theme()：主题设定，主要用于调整图表的细节，包括图表背景颜色、网格线的间隔与颜色
+等。
+
+---
+class: center
+# 陷入思索
+
+--
+.content-box-red[老师，我有一个问题？
+]
+
+--
+.content-box-green[嗯，什么问题？
+]
+
+--
+.content-box-red[
+我觉得这个ggplot2有点高级，但是——
+
+```{r echo=FALSE,fig.align='center'}
+include_graphics('听不懂.gif')
+```
+]
+---
+# 未完待续。。。
+
+---
+class:center middle
+background-image: url("titleimage.jpg")
+background-size: cover# .white[谢谢聆听!]
+
+## .red[勤加练习，方能提高绘图效率！]
+
+### .white[毛益民]
+### .white[浙江工商大学公共管理学院]

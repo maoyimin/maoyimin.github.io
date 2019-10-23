@@ -127,7 +127,11 @@ library(tidyr)
 head(citydata)
 dat1 <- citydata %>% 
   gather(year,gdp,-city) %>% 
-  filter(city=='北京'|city=='上海'|city=='广州'|city=='深圳'|city=='杭州',
+  filter(city=='北京'|
+           city=='上海'|
+           city=='广州'|
+           city=='深圳'|
+           city=='杭州',
          year>=2003&year<=2017) %>% 
   spread(city,gdp) 
 
