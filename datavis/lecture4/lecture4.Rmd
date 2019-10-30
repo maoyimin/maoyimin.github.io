@@ -135,6 +135,7 @@ include_graphics('economist.jpeg')
 ```
 ---
 # 让我们做一张经济学人风格的图吧！
+--
 ```{r echo=FALSE,out.height=500,out.width=500,fig.align='center'}
 mycars <- cars %>% 
   mutate(type=rep(c("Domestic","Foreign"),25))
@@ -320,7 +321,7 @@ ggplot(Salaries,aes(x=rank,fill=sex))+
 ```{r echo=FALSE, message=FALSE, warning=FALSE,fig.align='center'}
 ggplot(Salaries,aes(x=rank,fill=sex))+
   geom_bar(position = "dodge")+
-  labs(title = "Salaries for Professors",
+  labs(title = "The number of peeple in different rank of teaching",
        subtitle = "The 2008-09 nine-month academic salary in a college in the U.S.",
        x="",
        caption = "Fox J. and Weisberg, S. (2011) An R Companion to Applied Regression, Second Edition Sage.")+
