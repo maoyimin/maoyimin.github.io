@@ -152,3 +152,75 @@ detach(dat1)
 #c('bejing','guangzhou','hangzhou','shanghai','shenzhen')
 
 
+library(dplyr)
+library(ggplot2)
+mycars <- cars %>% 
+  mutate(type=rep(c("Domestic","Foreign"),25))
+ggplot(mycars,aes(x=speed,y=dist,col=type,pch=type))+
+  geom_point(size=4)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)",
+       pch="Type",col="Type")+
+  theme_economist()
+
+
+
+
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "dodge")+
+  labs(title = "Salaries for Professors",
+       subtitle = "The 2008-09 nine-month academic salary in a college in the U.S.",
+       x="",
+       caption = "Fox J. and Weisberg, S. (2011) An R Companion to Applied Regression, Second Edition Sage.")+
+  theme_economist()+
+  scale_fill_manual(values = c("#6794a7","#014d64"))
+
+
+# 克利夫兰点图
+df <- mtcars %>% 
+  mutate(car=row.names(mtcars))
+df
+order <- sort(df$mpg,index.return=T,decreasing = F)
+df$car_fator <- factor(df$car,levels = df$car[order$ix])
+ggplot(df,aes(mpg,car_fator))+
+  #geom_segment(aes(x=0,xend=mpg,y=car_fator,yend=car_fator))+
+  geom_point(shape=21,size=3,color="black",fill="red")
+
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggthemes)
+citypop <- read_excel("datavis/data/citypop.xls")
+citypop_l <- citypop%>% 
+  gather(year,pop,-city) %>% 
+  filter(city=='北京'|
+           city=='上海'|
+           city=='广州'|
+           city=='深圳'|
+           city=='杭州',
+         year>=2000&year<=2017)
+citygdp <- read_excel("datavis/data/citygdp.xls")
+citygdp_l <- citygdp%>% 
+  gather(year,gdp,-city) %>% 
+  filter(city=='北京'|
+           city=='上海'|
+           city=='广州'|
+           city=='深圳'|
+           city=='杭州',
+         year>=2000&year<=2017)
+
+citydata <- merge(citypop_l,citygdp_l,by=c("city","year")) %>% 
+  mutate(lpop=log(pop),lgdp=log(gdp))
+head(citydata)
+ggplot(citydata,aes(x=lpop,y=lgdp,col=city,shape=city))+
+  geom_point(size=4)+
+  theme_economist()+
+  theme(text = element_text(family = "STKaiti"))
+
+
+
+
+

@@ -21,6 +21,8 @@ library(knitr)
 library(tibble)
 library(ggplot2)
 library(plotly)
+library(dplyr)
+library(ggthemes)
 ```
 
 ```{r xaringan-themer, include = FALSE}
@@ -126,8 +128,206 @@ include_graphics('听不懂.gif')
 ```
 ]
 ---
-# 未完待续。。。
+# 经济学人图表
 
+```{r echo=FALSE,fig.align='center'}
+include_graphics('economist.jpeg')
+```
+---
+# 让我们做一张经济学人风格的图吧！
+```{r echo=FALSE,out.height=500,out.width=500,fig.align='center'}
+mycars <- cars %>% 
+  mutate(type=rep(c("Domestic","Foreign"),25))
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=4)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)",
+       shape="Type",col="Type")+
+  theme_economist()
+
+```
+
+---
+# 这是怎么做出来的呢？
+
+>学会ggplot2,一切皆有可能。
+
+```{r echo=FALSE,fig.align='center'}
+include_graphics('grammar2.png')
+```
+
+---
+# 一个简单的例子
+
+.content-box-red[
+## 数据集 cars 
+
+[,1]	speed : numeric	Speed (mph)
+
+[,2]	dist:	numeric	Stopping distance (ft)
+
+Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.
+]
+
+```{r}
+mycars <- cars %>% 
+  mutate(type=rep(c("Domestic","Foreign"),25)) #生成类别变量
+head(mycars)
+```
+
+---
+# ggplot 作图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist))+
+  geom_point()
+```
+
+---
+
+# ggplot 作图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type))+
+  geom_point()
+```
+
+---
+# ggplot 作图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point()
+```
+
+---
+# ggplot 作图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  theme(text=element_text(size=15))
+```
+---
+# ggplot 作图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+   theme_economist()
+```
+---
+# ggplot 作图
+
+```{r,out.height=300,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+   theme_economist()
+```
+---
+# ggplot 作图
+
+```{r,out.height=300,fig.align='center'}
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+   theme_economist_white()
+```
+---
+# 练习
+
+> 请利用ggplot2绘制如下图形：
+
+> 1. 探索2016年全球各国（或地区）发展水平与腐败程度之间的关系
+
+> 2. 点击右侧绿底英文下载数据 [.content-box-green[hdi vs cpi]](/datavis/data/hdi-cpi.csv)
+
+> 3. 绘图风格参照《经济学人》杂志。
+
+> 
+
+## 
+.content-box-green[
+
+绘图完成后，感受一下基础绘图plot函数和ggplot2的功能差异。
+]
+---
+# 其它图形的绘制
+## 先载入一份关于教师薪酬的数据
+```{r message=FALSE}
+library(car)
+data("Salaries")
+head(Salaries)
+```
+---
+# 密度图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(Salaries,aes(x=salary))+
+  geom_density()
+```
+
+---
+# 密度图
+
+```{r,out.height=400,out.width=600,fig.align='center'}
+ggplot(Salaries,aes(x=salary,fill=rank))+ # 分组填充颜色
+  geom_density()
+```
+---
+# 密度图
+
+```{r,out.height=400,out.width=600,fig.align='center'}
+ggplot(Salaries,aes(x=salary,fill=rank))+
+  geom_density(alpha=0.3) ## 设置透明度
+```
+---
+#条形图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "stack")+ 
+  theme_classic()
+```
+---
+#条形图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "dodge")+
+  theme_classic()
+```
+---
+#条形图
+
+```{r,out.height=400,fig.align='center'}
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "fill")+
+  labs(y="proportion")
+```
+---
+#条形图(经济学人风格)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE,fig.align='center'}
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "dodge")+
+  labs(title = "Salaries for Professors",
+       subtitle = "The 2008-09 nine-month academic salary in a college in the U.S.",
+       x="",
+       caption = "Fox J. and Weisberg, S. (2011) An R Companion to Applied Regression, Second Edition Sage.")+
+  theme_economist()+
+  scale_fill_manual(values = c("#6794a7","#014d64"))
+
+```
 ---
 class:center middle
 background-image: url("titleimage.jpg")

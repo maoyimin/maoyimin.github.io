@@ -4,7 +4,7 @@
     <title>零基础学数据可视化</title>
     <meta charset="utf-8" />
     <meta name="author" content="毛益民　副教授" />
-    <meta name="date" content="2019-10-23" />
+    <meta name="date" content="2019-10-30" />
     <link rel="stylesheet" href="zh-CN.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## 四、高级绘图 ggplot2
 ### 毛益民　副教授
 ### 浙江工商大学公共管理学院
-### 2019-10-23
+### 2019-10-30
 
 ---
 
@@ -108,8 +108,241 @@ class: center
 &lt;img src="听不懂.gif" style="display: block; margin: auto;" /&gt;
 ]
 ---
-# 未完待续。。。
+# 经济学人图表
 
+&lt;img src="economist.jpeg" width="1587" style="display: block; margin: auto;" /&gt;
+---
+# 让我们做一张经济学人风格的图吧！
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-7-1.png" width="500" height="500" style="display: block; margin: auto;" /&gt;
+
+---
+# 这是怎么做出来的呢？
+
+&gt;学会ggplot2,一切皆有可能。
+
+&lt;img src="grammar2.png" width="836" style="display: block; margin: auto;" /&gt;
+
+---
+# 一个简单的例子
+
+.content-box-red[
+## 数据集 cars 
+
+[,1]	speed : numeric	Speed (mph)
+
+[,2]	dist:	numeric	Stopping distance (ft)
+
+Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.
+]
+
+
+```r
+mycars &lt;- cars %&gt;% 
+  mutate(type=rep(c("Domestic","Foreign"),25)) #生成类别变量
+head(mycars)
+```
+
+```
+##   speed dist     type
+## 1     4    2 Domestic
+## 2     4   10  Foreign
+## 3     7    4 Domestic
+## 4     7   22  Foreign
+## 5     8   16 Domestic
+## 6     9   10  Foreign
+```
+
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist))+
+  geom_point()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-10-1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type))+
+  geom_point()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-11-1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-12-1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  theme(text=element_text(size=15))
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-13-1.png" height="400" style="display: block; margin: auto;" /&gt;
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+   theme_economist()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-14-1.png" height="400" style="display: block; margin: auto;" /&gt;
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+   theme_economist()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-15-1.png" height="300" style="display: block; margin: auto;" /&gt;
+---
+# ggplot 作图
+
+
+```r
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+   theme_economist_white()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-16-1.png" height="300" style="display: block; margin: auto;" /&gt;
+---
+# 练习
+
+&gt; 请利用ggplot2绘制如下图形：
+
+&gt; 1. 探索2016年全球各国（或地区）发展水平与腐败程度之间的关系
+
+&gt; 2. 点击右侧绿底英文下载数据 [.content-box-green[hdi vs cpi]](/datavis/data/hdi-cpi.csv)
+
+&gt; 3. 绘图风格参照《经济学人》杂志。
+
+&gt; 
+
+## 
+.content-box-green[
+
+绘图完成后，感受一下基础绘图plot函数和ggplot2的功能差异。
+]
+---
+# 其它图形的绘制
+## 先载入一份关于教师薪酬的数据
+
+```r
+library(car)
+data("Salaries")
+head(Salaries)
+```
+
+```
+##        rank discipline yrs.since.phd yrs.service  sex salary
+## 1      Prof          B            19          18 Male 139750
+## 2      Prof          B            20          16 Male 173200
+## 3  AsstProf          B             4           3 Male  79750
+## 4      Prof          B            45          39 Male 115000
+## 5      Prof          B            40          41 Male 141500
+## 6 AssocProf          B             6           6 Male  97000
+```
+---
+# 密度图
+
+
+```r
+ggplot(Salaries,aes(x=salary))+
+  geom_density()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-18-1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+# 密度图
+
+
+```r
+ggplot(Salaries,aes(x=salary,fill=rank))+ # 分组填充颜色
+  geom_density()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-19-1.png" width="600" height="400" style="display: block; margin: auto;" /&gt;
+---
+# 密度图
+
+
+```r
+ggplot(Salaries,aes(x=salary,fill=rank))+
+  geom_density(alpha=0.3) ## 设置透明度
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-20-1.png" width="600" height="400" style="display: block; margin: auto;" /&gt;
+---
+#条形图
+
+
+```r
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "stack")+ 
+  theme_classic()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-21-1.png" height="400" style="display: block; margin: auto;" /&gt;
+---
+#条形图
+
+
+```r
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "dodge")+
+  theme_classic()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-22-1.png" height="400" style="display: block; margin: auto;" /&gt;
+---
+#条形图
+
+
+```r
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "fill")+
+  labs(y="proportion")
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-23-1.png" height="400" style="display: block; margin: auto;" /&gt;
+---
+#条形图(经济学人风格)
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 ---
 class:center middle
 background-image: url("titleimage.jpg")
