@@ -4,7 +4,7 @@
     <title>零基础学数据可视化</title>
     <meta charset="utf-8" />
     <meta name="author" content="毛益民　副教授" />
-    <meta name="date" content="2019-10-30" />
+    <meta name="date" content="2019-11-06" />
     <link rel="stylesheet" href="zh-CN.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## 四、高级绘图 ggplot2
 ### 毛益民　副教授
 ### 浙江工商大学公共管理学院
-### 2019-10-30
+### 2019-11-06
 
 ---
 
@@ -345,9 +345,114 @@ ggplot(Salaries,aes(x=rank,fill=sex))+
 
 &lt;img src="lecture4_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 ---
+# 线图:先看数据
+
+```r
+head(economics,5)
+```
+
+```
+## # A tibble: 5 x 6
+##   date         pce    pop psavert uempmed unemploy
+##   &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1967-07-01  507. 198712    12.6     4.5     2944
+## 2 1967-08-01  510. 198911    12.6     4.7     2945
+## 3 1967-09-01  516. 199113    11.9     4.6     2958
+## 4 1967-10-01  512. 199311    12.9     4.9     3143
+## 5 1967-11-01  517. 199498    12.8     4.7     3066
+```
+
+```r
+head(economics_long,5)
+```
+
+```
+## # A tibble: 5 x 4
+##   date       variable value  value01
+##   &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1967-07-01 pce       507. 0       
+## 2 1967-08-01 pce       510. 0.000265
+## 3 1967-09-01 pce       516. 0.000762
+## 4 1967-10-01 pce       512. 0.000471
+## 5 1967-11-01 pce       517. 0.000916
+```
+
+---
+#绘图：单变量
+
+```r
+ggplot(economics, aes(date, unemploy)) + geom_line()
+```
+
+![](lecture4_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+
+---
+# 绘图：多个变量
+
+```r
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line()
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+#练习
+
+&gt; 请绘制北上广深杭五个城市2003-2017年GDP的变化轨迹
+
+&gt; [数据citydata, 点击下载](/datavis/data/citydata.xls)
+
+--
+&lt;img src="cityplot.png" width="300" height="300" /&gt;
+---
+# 把柱形图和线图结合一下
+
+```r
+library(RColorBrewer)
+ggplot(economics,aes(x=date,y=unemploy))+
+  geom_bar(aes(color=unemploy),stat="identity")+geom_line()+
+  scale_color_gradientn(colors = brewer.pal(9,"Reds"))
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-29-1.png" width="500" height="350" style="display: block; margin: auto;" /&gt;
+
+
+---
+# 点图
+
+```r
+df &lt;- mtcars %&gt;% mutate(car=factor(row.names(mtcars)))
+ggplot(df,aes(car,mpg))+
+  geom_point(shape=21,size=3)
+```
+
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-30-1.png" height="400" style="display: block; margin: auto;" /&gt;
+
+---
+# 克利夫兰点图
+&lt;img src="lecture4_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# 克利夫兰点图的代码
+
+```{}
+df &lt;- mtcars %&gt;% mutate(car=row.names(mtcars))
+
+order &lt;- sort(df$mpg,index.return=T,decreasing = F)
+
+df$car_fator &lt;- factor(df$car,levels = df$car[order$ix])
+
+ggplot(df,aes(mpg,car_fator))+
+
+  geom_point(shape=21,size=3,
+             color="black",fill="red")
+```
+
+---
 class:center middle
 background-image: url("titleimage.jpg")
-background-size: cover# .white[谢谢聆听!]
+background-size: cover# .white[谢谢!]
 
 ## .red[勤加练习，方能提高绘图效率！]
 

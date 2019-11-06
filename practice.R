@@ -193,7 +193,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(ggthemes)
-citypop <- read_excel("datavis/data/citypop.xls")
+citydata <- read_excel("datavis/data/citydata.xls")
 citypop_l <- citypop%>% 
   gather(year,pop,-city) %>% 
   filter(city=='北京'|
@@ -221,6 +221,9 @@ ggplot(citydata,aes(x=lpop,y=lgdp,col=city,shape=city))+
   theme(text = element_text(family = "STKaiti"))
 
 
-
+head(economics)
+ggplot(economics,aes(x=date,y=unemploy))+
+  geom_bar(aes(fill=unemploy,col=unemploy),stat="identity")+
+  geom_line()
 
 

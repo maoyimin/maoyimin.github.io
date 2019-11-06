@@ -330,9 +330,84 @@ ggplot(Salaries,aes(x=rank,fill=sex))+
 
 ```
 ---
+# 线图:先看数据
+```{r message=FALSE}
+head(economics,5)
+head(economics_long,5)
+```
+
+---
+#绘图：单变量
+```{r}
+ggplot(economics, aes(date, unemploy)) + geom_line()
+```
+
+---
+# 绘图：多个变量
+```{r,fig.align='center'}
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line()
+```
+
+---
+#练习
+
+> 请绘制北上广深杭五个城市2003-2017年GDP的变化轨迹
+
+> [数据citydata, 点击下载](/datavis/data/citydata.xls)
+
+--
+```{r echo=FALSE,out.height=300,out.width=300}
+include_graphics("cityplot.png")
+```
+---
+# 把柱形图和线图结合一下
+```{r,fig.align='center',out.width=500,out.height=350}
+library(RColorBrewer)
+ggplot(economics,aes(x=date,y=unemploy))+
+  geom_bar(aes(color=unemploy),stat="identity")+geom_line()+
+  scale_color_gradientn(colors = brewer.pal(9,"Reds"))
+```
+
+
+---
+# 点图
+```{r,out.height=400,fig.align='center'}
+df <- mtcars %>% mutate(car=factor(row.names(mtcars)))
+ggplot(df,aes(car,mpg))+
+  geom_point(shape=21,size=3)
+```
+
+---
+# 克利夫兰点图
+```{r echo=FALSE,fig.align='center'}
+df <- mtcars %>% mutate(car=row.names(mtcars))
+order <- sort(df$mpg,index.return=T,decreasing = F)
+df$car_fator <- factor(df$car,levels = df$car[order$ix])
+ggplot(df,aes(mpg,car_fator))+
+  geom_point(shape=21,size=3,color="black",fill="red")
+```
+
+---
+# 克利夫兰点图的代码
+
+```{}
+df <- mtcars %>% mutate(car=row.names(mtcars))
+
+order <- sort(df$mpg,index.return=T,decreasing = F)
+
+df$car_fator <- factor(df$car,levels = df$car[order$ix])
+
+ggplot(df,aes(mpg,car_fator))+
+
+  geom_point(shape=21,size=3,
+             color="black",fill="red")
+```
+
+---
 class:center middle
 background-image: url("titleimage.jpg")
-background-size: cover# .white[谢谢聆听!]
+background-size: cover# .white[谢谢!]
 
 ## .red[勤加练习，方能提高绘图效率！]
 
