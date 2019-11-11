@@ -1,0 +1,83 @@
+---
+title: "期末作业要求"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(icon)
+library(DT)
+library(knitr)
+library(tibble)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(ggthemes)
+```
+
+## 自选主题，撰写一份数据分析报告。
+
+> 给分依据：代码正确性、简洁性，报告信息量、美观度
+
+> 对于优秀作品，给予高分鼓励。
+
+## 内容要求：
+
+1. 篇幅不少于5页；绘图不少于3张，每张大小不得超过半页word；表格1~3张。表格*顶部*加文字标题，比如：表1：xxxx。图片*底部*加文字标题，比如：图1：xxxx。
+
+2. 数据来源为“国家数据”官方网站，可在此基础上增加1~2个由其它机构提供的指标，比如由人大国发院发布的城市政商关系指数。所用数据必须注明出处。
+
+3. 一级标题小三黑体，二级标题小四黑体；正文小四宋体、1.25倍行距。
+
+4. word中嵌入完整代码，可在代码行中以# 开头写说明文字.
+
+```{r,out.height=300,fig.align='center'}
+## 绘制图1
+mycars <- cars %>% 
+  mutate(type=rep(c("Domestic","Foreign"),25)) #生成类别变量
+
+ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+   theme_economist_white() # 加载经济学人主题
+```
+
+
+## 报告结构：
+
+标题
+
+学院 班级 姓名 学号
+
+1. 研究问题与价值
+
+2. 数据的主要来源
+
+3. 数据整理过程
+
+4. 分析结果及其解释 
+
+5. 结论与讨论
+
+参考文献
+
+## 上交方式
+> 打印版第11周课上上交，电子版（包含报告、R codes、数据）发送至 mymjiaoxue@163.com
+
+## 数据与资源(示例)
+
+- [网站：国家数据](http://data.stats.gov.cn/index.htm)
+
+- [报告：人大国发院丨中国城市政商关系排行榜（2018）](https://www.sohu.com/a/351000057_260616)
+
+- [报告：省级政府和重点城市网上政务服务能力调查评估报告（2019）](http://www.egovernment.gov.cn/art/2019/4/24/art_194_5843.html)
+
+

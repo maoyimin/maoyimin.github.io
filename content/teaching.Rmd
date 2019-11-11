@@ -12,6 +12,7 @@ title: "Teaching"
 
 - 《零基础学数据可视化》 [导论PPT](/datavis/lecture1/lecture1.html) [数据处理基础PPT](/datavis/lecture2/lecture2.html) [基础绘图PPT](/datavis/lecture3/lecture3.html)
 [高级绘图 ggplot2 PPT](/datavis/lecture4/lecture4.html)
+[期末大型作业要求](/datavis/exam/exam.html)
 
 ### 2018-2019学年
 

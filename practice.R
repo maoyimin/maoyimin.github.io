@@ -220,10 +220,83 @@ ggplot(citydata,aes(x=lpop,y=lgdp,col=city,shape=city))+
   theme_economist()+
   theme(text = element_text(family = "STKaiti"))
 
-
+library(RColorBrewer)
 head(economics)
 ggplot(economics,aes(x=date,y=unemploy))+
-  geom_bar(aes(fill=unemploy,col=unemploy),stat="identity")+
-  geom_line()
+  geom_bar(aes(color=unemploy),stat="identity")+
+  geom_line()+
+  scale_color_gradientn(colors = brewer.pal(9,"Reds"))
 
 
+library(ggplot2)
+library(maptools)
+library(maps)
+library(mapdata)
+library(RColorBrewer)
+library(ggthemes)
+states_map <- map_data("state")
+ggplot(states_map,aes(x=long,y=lat,group=group))+
+  geom_polygon(fill="white",col="black")
+
+crimes <- USArrests %>% 
+  mutate(region=tolower(rownames(USArrests)))
+head((crimes))
+
+crimes_map <- merge(states_map,crimes,by="region") %>% 
+  arrange(group,order)
+head(crimes_map)
+
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Assault))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colors= brewer.pal(9,"Reds"))
+
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Assault))+
+  geom_polygon(col="black")+
+  scale_fill_gradient2(low = "green",mid="gray",high="red",
+                       midpoint = median(crimes$Assault))+
+  scale_x_continuous(limits =c(-125,-68))
+
+
+#中国地图
+china_map <- readShapePoly(file.choose())
+x <- china_map@data
+xs <-data.frame(x, id = seq(0:924)-1)
+#添加一列新的省名，把原省名的中文格式转换为UTF-8
+xs$NAME1 <- iconv(xs$NAME,"GBK", "UTF-8")
+
+# 转换数据
+china_map1 <- fortify(china_map)
+head(china_map1)
+
+#合并
+china_map_data <- join(china_map1, xs, type = 'full')
+head(china_map_data)
+
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+
+#
+qa <- quantile(china_map_data$AREA,seq(0,1,0.2))
+china_map_data$area_q <- cut(china_map_data$AREA,qa,
+                             labels = c("0-20%",
+                                        "20-40%",
+                                        "40-60%",
+                                        "60-80%",
+                                        "80-100%"),
+                             include.lowest = TRUE)
+
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=area_q))+
+  geom_polygon(col="black")+
+  scale_fill_manual(values=brewer.pal(5,"RdBu"))+
+  labs(fill="AREA")+
+  theme_light()
+
+# your_data 是你要画的dataframe，其中要有省名NAME_1
+plot_data <- join(china_map_data, your_data, type = 'full')
