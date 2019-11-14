@@ -1,0 +1,212 @@
+---
+title: "零基础学数据可视化"
+subtitle: "五、空间绘图"
+author: "毛益民　副教授"
+institute: "浙江工商大学公共管理学院"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [zh-CN.css,custom.css,xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(icon)
+library(DT)
+library(knitr)
+library(tibble)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(maptools)
+library(maps)
+library(RColorBrewer)
+library(ggthemes)
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+duo_accent(primary_color = "#006747", 
+           secondary_color = "#CFC493",
+           header_h1_font_size = '40px',
+           header_h2_font_size = '30px',
+           header_h3_font_size = '20px',
+           title_slide_background_image ="titleimage.jpg")
+```
+# 如何利用ggplot2绘制一幅地图？
+--
+```{r echo=FALSE,fig.width=15,fig.height=10}
+states_map <- map_data("state")
+crimes <- USArrests %>% 
+  mutate(region=tolower(rownames(USArrests)))
+crimes_map <- merge(states_map,crimes,by="region") %>% 
+  arrange(group,order)
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colors= brewer.pal(9,"Reds"))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973\n")+
+  theme(plot.title = element_text(size=20,color = "black",hjust = 0.5))
+
+```
+---
+#本次课需要使用的R包
+
+```
+library(ggthemes)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(maptools) # 安装
+library(maps) # 安装
+library(RColorBrewer)
+```
+```{r}
+# 读取美国地图
+states_map <- map_data("state")
+head(states_map)
+```
+---
+# 绘制美国州域地图
+```{r,fig.width=15,fig.height=8}
+ggplot(states_map,aes(x=long,y=lat,group=group))+
+  geom_polygon(fill="white",col="black") #这是一幅空白地图...
+```
+
+---
+# 读取各州犯罪数据
+
+```{r}
+crimes <- USArrests %>% 
+  mutate(region=tolower(rownames(USArrests)))
+head(crimes)
+```
+
+---
+# 将地图数据与各州犯罪数据进行合并
+```{r}
+crimes_map <- merge(states_map,crimes,by="region") %>% 
+  arrange(group,order)
+head(crimes_map)
+```
+
+---
+# 按照谋杀率给各州赋予颜色
+```{r fig.width=15,fig.height=8}
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")
+```
+
+
+---
+# 对配色予以调整，添加标题
+```{r fig.width=12,fig.height=6}
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colors= brewer.pal(9,"Reds"))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")+
+  theme(plot.title = element_text(size=20,color = "black",hjust = 0.5))
+```
+
+---
+
+# 也可以如下调色
+```{r echo=FALSE, fig.height=10, fig.width=15}
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")+
+  scale_fill_gradient2(low = "green",mid="gray",high="red",
+                       midpoint = median(crimes$Murder))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")+
+  theme(plot.title = element_text(size=20,color = "black",hjust = 0.5))
+```
+
+---
+# 也可以把各州名字加上
+```{r echo=FALSE, message=FALSE, warning=FALSE,fig.height=10, fig.width=15}
+p <- ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")+
+  scale_fill_gradient2(low = "green",mid="gray",high="red",
+                       midpoint = median(crimes$Murder))+
+  scale_x_continuous(limits =c(-125,-68))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")
+
+crimes_map_mean <- crimes_map %>% group_by(region) %>% summarise_all(mean)
+p + geom_text(data = crimes_map_mean,aes(x=long,y=lat,label=region))
+```
+
+---
+# 好久不见的土拨鼠
+
+```{r echo=FALSE,fig.align='center'}
+include_graphics("土拨鼠.gif")
+```
+
+---
+# 中国地图
+
+> 先下载数据 [中国地图](/datavis/data/chinaprovinceborderdata_tar_gz.zip)。解压后包含三个文件
+
+## 读取地图
+```{r}
+# 加载maptools包
+# china_map <- readShapePoly(file.choose())
+china_map <- readShapePoly("bou2_4p.shp")
+```
+---
+# 查看地图
+```{r fig.align='center'}
+plot(china_map)
+```
+
+---
+# 处理数据
+```{r}
+# mac读取中文容易乱码，需要转换
+x <- china_map@data
+xs <-data.frame(x, id = seq(0:924)-1)
+#添加一列新的省名，把原省名的中文格式转换为UTF-8
+xs$NAME1 <- iconv(xs$NAME,"GBK", "UTF-8")
+head(xs)
+```
+
+---
+# 转换成ggplot2能识别的数据
+```{r}
+# 转换数据
+china_map1 <- fortify(china_map)
+head(china_map1)
+```
+
+---
+# 合并地图数据和一般数据
+```{r}
+#合并
+china_map_data <- join(china_map1,xs,type="full")
+head(china_map_data)
+
+```
+---
+# 按省域面积大小赋予颜色
+```{r fig.height=5,fig.width=10}
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+```
+---
+
+```{r echo=FALSE,out.height=600}
+include_graphics("toufa.jpeg")
+```
+---
+class:center middle
+background-image: url("titleimage.jpg")
+background-size: cover# .white[谢谢!]
+
+## .red[勤加练习，才能高效绘图！]
+
+### .white[毛益民]
+### .white[浙江工商大学公共管理学院]

@@ -228,12 +228,13 @@ ggplot(economics,aes(x=date,y=unemploy))+
   scale_color_gradientn(colors = brewer.pal(9,"Reds"))
 
 
+library(dplyr)
 library(ggplot2)
 library(maptools)
 library(maps)
-library(mapdata)
 library(RColorBrewer)
 library(ggthemes)
+
 states_map <- map_data("state")
 ggplot(states_map,aes(x=long,y=lat,group=group))+
   geom_polygon(fill="white",col="black")
@@ -246,15 +247,21 @@ crimes_map <- merge(states_map,crimes,by="region") %>%
   arrange(group,order)
 head(crimes_map)
 
-ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Assault))+
+ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
   geom_polygon(col="black")+
-  scale_fill_gradientn(colors= brewer.pal(9,"Reds"))
+  scale_fill_gradientn(colors= brewer.pal(9,"Reds"))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")
 
-ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Assault))+
+p <- ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
   geom_polygon(col="black")+
   scale_fill_gradient2(low = "green",mid="gray",high="red",
-                       midpoint = median(crimes$Assault))+
-  scale_x_continuous(limits =c(-125,-68))
+                       midpoint = median(crimes$Murder))+
+  scale_x_continuous(limits =c(-125,-68))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")
+
+crimes_map_mean <- crimes_map %>% group_by(region) %>% summarise_all(mean)
+p + geom_text(data = crimes_map_mean,aes(x=long,y=lat,label=region))
+  
 
 
 #中国地图
@@ -269,6 +276,7 @@ china_map1 <- fortify(china_map)
 head(china_map1)
 
 #合并
+library(plyr)
 china_map_data <- join(china_map1, xs, type = 'full')
 head(china_map_data)
 
