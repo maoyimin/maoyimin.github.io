@@ -57,7 +57,7 @@ ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
 
 ```
 library(ggthemes)
-library(plyr)
+library(plyr) # 安装
 library(dplyr)
 library(ggplot2)
 library(maptools) # 安装
