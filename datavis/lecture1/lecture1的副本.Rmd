@@ -1,17 +1,18 @@
 ---
 title: "零基础学数据可视化"
-subtitle: "一、导论"
 author: "毛益民　副教授"
-institute: "浙江工商大学公共管理学院"
-date: '`r Sys.Date()`'
+date: "`r Sys.Date()`"
 output:
-  xaringan::moon_reader:
-    css: [zh-CN.css,custom.css,xaringan-themer.css]
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+  html_document:
+    df_print: paged
+  pdf_document:
+    includes:
+      in_header: header.tex
+    keep_tex: yes
+    latex_engine: xelatex
+institute: 浙江工商大学公共管理学院
+subtitle: 一、导论
+always_allow_html: yes
 ---
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)

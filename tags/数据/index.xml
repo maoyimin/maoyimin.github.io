@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据 on Yimin&#39;s homepage</title>
-    <link>https://maoyimin.github.io/tags/%E6%95%B0%E6%8D%AE/</link>
+    <link>/tags/%E6%95%B0%E6%8D%AE/</link>
     <description>Recent content in 数据 on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://maoyimin.github.io/tags/%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>各国政治变迁（1960-2009）</title>
-      <link>https://maoyimin.github.io/post/2019/01/08/democracy/</link>
+      <link>/post/2019/01/08/democracy/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://maoyimin.github.io/post/2019/01/08/democracy/</guid>
+      <guid>/post/2019/01/08/democracy/</guid>
       <description></description>
     </item>
     
