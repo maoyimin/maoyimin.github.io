@@ -167,15 +167,13 @@ include_graphics('土拨鼠.gif')
 ---
 # 请创建如下数据框
 ```{r echo=FALSE}
-df <- data.frame(
-  name=c('张三','李四','王五','赵六'),
-  code=1:4,
-  score=c(80,57,66,78),
-  level=c('B','C','C','B')
-)
-datatable(df,
-  fillContainer = FALSE, options = list(pageLength = 4))
+  name <- c('lily','jame','jone',"lilei")
+  code <- 1:4
+  score <- c(80,57,66,78)
+  level <- c('B','C','C','B')
+  data.frame(name,code,score,level)
 ```
+
 ---
 # 数据属性
 .content-box-green[类别型：不同类型的数据
@@ -279,6 +277,7 @@ mydf
 ```
 
 ]
+
 ---
 # tidyr包 两个非常有用的函数。
 .content-box-green[gather()：将短数据变成长数据]  .content-box-red[spread(): 将长数据变成短数据]
@@ -436,20 +435,20 @@ scores <- readxl::read_xls("scores.xls")
 2. 考试成绩，包括姓名(name)以及各科成绩，即语文(chinese)、数学(math)、英语(english)、物理(physics)、化学(chemistry)、生物(biology)。下载 [scores.xls](/datavis/data/scores.xls)
 ---
 # 让我们先来浏览一下数据内容：
-学生名单（为了逼真，我还起了396个名字，可见用心良苦!
+学生名单（为了逼真，我还起了396个名字，可见用心良苦!)
 
 ```{r echo=FALSE}
-datatable(students,
-  fillContainer = FALSE, options = list(pageLength = 6))
+students
 ```
+
 ---
 # 让我们先来浏览一下数据内容：
 考试成绩
 
 ```{r echo=FALSE}
-datatable(scores,
-  fillContainer = FALSE, options = list(pageLength = 6))
+scores
 ```
+
 ---
 # 操作任务
 
