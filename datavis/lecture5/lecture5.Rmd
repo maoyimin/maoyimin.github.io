@@ -3,7 +3,6 @@ title: "零基础学数据可视化"
 subtitle: "五、空间绘图"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"
-date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
     css: [zh-CN.css,custom.css,xaringan-themer.css]
@@ -15,7 +14,6 @@ output:
 ---
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(icon)
 library(DT)
 library(knitr)
 library(tibble)
@@ -28,15 +26,6 @@ library(RColorBrewer)
 library(ggthemes)
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-duo_accent(primary_color = "#006747", 
-           secondary_color = "#CFC493",
-           header_h1_font_size = '40px',
-           header_h2_font_size = '30px',
-           header_h3_font_size = '20px',
-           title_slide_background_image ="titleimage.jpg")
-```
 # 如何利用ggplot2绘制一幅地图？
 --
 ```{r echo=FALSE,fig.width=15,fig.height=10}

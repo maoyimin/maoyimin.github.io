@@ -15,7 +15,6 @@ output:
 ---
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(icon)
 library(DT)
 library(knitr)
 library(tibble)
@@ -25,15 +24,6 @@ library(dplyr)
 library(ggthemes)
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-duo_accent(primary_color = "#006747", 
-           secondary_color = "#CFC493",
-           header_h1_font_size = '40px',
-           header_h2_font_size = '30px',
-           header_h3_font_size = '20px',
-           title_slide_background_image ='数据动态.gif')
-```
 # ggplot2是什么？
 
 > ggplot2 是一个功能强大且灵活的R 包，由Hadley Wickham 编写，它可以生成优雅而实用的图形。ggplot2中的gg表示图形语法*（grammar of graphic）*，这是一个通过使用“语法”来绘图的图形概念。
