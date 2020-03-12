@@ -487,7 +487,9 @@ include_graphics("土拨鼠冲澡.gif")
 ---
 class:center middle
 background-image: url("lastimage.jpg")
-background-size: cover# .white[谢谢聆听!]
+background-size: cover
+
+# .white[谢谢聆听!]
 
 ## .red[记得回去以后多多练习哦！]
 

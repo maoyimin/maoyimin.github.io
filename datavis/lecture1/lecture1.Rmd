@@ -3,7 +3,6 @@ title: "零基础学数据可视化"
 subtitle: "一、导论"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"
-date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
     css: [zh-CN.css,custom.css,xaringan-themer.css]

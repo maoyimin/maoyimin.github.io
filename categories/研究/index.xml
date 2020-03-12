@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>研究 on Yimin&#39;s homepage</title>
-    <link>/categories/%E7%A0%94%E7%A9%B6/</link>
+    <link>https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6/</link>
     <description>Recent content in 研究 on Yimin&#39;s homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://maoyimin.github.io/categories/%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《权力法治与廉政治理》获奖</title>
-      <link>/post/2019/10/20/%E6%9D%83%E5%8A%9B%E6%B3%95%E6%B2%BB%E4%B8%8E%E5%BB%89%E6%94%BF%E6%B2%BB%E7%90%86%E8%8E%B7%E5%A5%96/</link>
+      <link>https://maoyimin.github.io/post/2019/10/20/%E6%9D%83%E5%8A%9B%E6%B3%95%E6%B2%BB%E4%B8%8E%E5%BB%89%E6%94%BF%E6%B2%BB%E7%90%86%E8%8E%B7%E5%A5%96/</link>
       <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019/10/20/%E6%9D%83%E5%8A%9B%E6%B3%95%E6%B2%BB%E4%B8%8E%E5%BB%89%E6%94%BF%E6%B2%BB%E7%90%86%E8%8E%B7%E5%A5%96/</guid>
+      <guid>https://maoyimin.github.io/post/2019/10/20/%E6%9D%83%E5%8A%9B%E6%B3%95%E6%B2%BB%E4%B8%8E%E5%BB%89%E6%94%BF%E6%B2%BB%E7%90%86%E8%8E%B7%E5%A5%96/</guid>
       <description>最近，专著《权力法治与廉政治理》（陈国权、毛益民等著，中国社会科学出版社2018年版）获奖：
  （1）浙江省第二十届哲学社会科学优秀成果奖（基础理论研究）一等奖。浙江省哲学社会科学优秀成果奖每两年评选一次，以省委、省政府名义颁发，是我省哲学社会科学类成果最高奖励。
   （2）入选2019年国家社科基金中华学术外译项目推荐书目。本年度推荐书目中，政治学类专著共10本。中华学术外译项目主要资助代表中国学术水准、体现中华文化精髓、反映中国学术前沿的学术精品，以外文形式在国外权威出版机构出版并进入国外主流发行传播渠道，旨在发挥国家社科基金的示范引导作用，深化中外学术交流和对话，进一步扩大中国学术的国际影响力，提升国际学术话语权，让世界了解“哲学社会科学中的中国”。
@@ -25,28 +25,28 @@
     
     <item>
       <title>各国政治变迁（1960-2009）</title>
-      <link>/post/2019/01/08/democracy/</link>
+      <link>https://maoyimin.github.io/post/2019/01/08/democracy/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019/01/08/democracy/</guid>
-      <description></description>
+      <guid>https://maoyimin.github.io/post/2019/01/08/democracy/</guid>
+      <description>## Specified labels in the order of: Missing, Under Control, Under Treatment. </description>
     </item>
     
     <item>
       <title>在学院研究生学术沙龙上做报告</title>
-      <link>/post/2018/12/05/report/</link>
+      <link>https://maoyimin.github.io/post/2018/12/05/report/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018/12/05/report/</guid>
+      <guid>https://maoyimin.github.io/post/2018/12/05/report/</guid>
       <description>受陈小华老师邀请，参加公共管理学院第八期研究生学术沙龙，和研究生们分享了论文《Does democratic transition reduce carbon intensity?》，讲解了合成控制法的原理以及基本操作。</description>
     </item>
     
     <item>
       <title>因果推断的匹配方法</title>
-      <link>/post/2018/09/21/matching-for-causal-inference/</link>
+      <link>https://maoyimin.github.io/post/2018/09/21/matching-for-causal-inference/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018/09/21/matching-for-causal-inference/</guid>
+      <guid>https://maoyimin.github.io/post/2018/09/21/matching-for-causal-inference/</guid>
       <description>Basic steps for matching The following are the basic steps in performing a causal analysis using data preprocessing (Stuart, 2010)1:
 Decide on covariates for which balance must be achieved Estimate the distance measure (e.g., propensity score) Condition on the distance measure (e.g., using matching, weighting, or subclassification) Assess balance on the covariates of interest; if poor, repeat steps 2-4 Estimate the treatment effect in the conditioned sample   一些有用的R包 cobalt R package cobalt package 是一个集成了诸多匹配方法的R包，由Noah Greifer开发。使用说明</description>
     </item>
