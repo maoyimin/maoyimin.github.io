@@ -14,23 +14,12 @@ output:
 ---
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(icon)
 library(DT)
 library(knitr)
 library(tibble)
 library(ggplot2)
 library(plotly)
 library(dplyr)
-```
-
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-duo_accent(primary_color = "#006747", 
-           secondary_color = "#CFC493",
-           header_h1_font_size = '40px',
-           header_h2_font_size = '30px',
-           header_h3_font_size = '20px',
-           title_slide_background_image ='数据动态.gif')
 ```
 
 # 一些英文单词
@@ -101,7 +90,7 @@ class(e)
 c(2,4,6);seq(2,4,by=0.5);rep(1:3,time=3)
 ```
 --
-### `r fa('bell')`.red[向量需要定义，否则结果会很残忍]
+### .red[向量需要定义，否则结果会很残忍]
 输入：lalala 
 
 输出：找不到对象 'lalala'
@@ -135,7 +124,7 @@ x <- c(1,2,3,4,5)
 x[3];x[x>3]
 ```
 ---
-# 不难不难，甚至有点轻松 `r fa('smile')`
+# 不难不难，甚至有点轻松
 ```{r,fig.align='center',echo=FALSE,out.width='75%'}
 include_graphics('jay.jpg')
 ```
@@ -447,7 +436,7 @@ scores <- readxl::read_xls("scores.xls")
 2. 考试成绩，包括姓名(name)以及各科成绩，即语文(chinese)、数学(math)、英语(english)、物理(physics)、化学(chemistry)、生物(biology)。下载 [scores.xls](/datavis/data/scores.xls)
 ---
 # 让我们先来浏览一下数据内容：
-学生名单（为了逼真，我还起了396个名字，可见用心良苦！`r icon::fa("heart")`）
+学生名单（为了逼真，我还起了396个名字，可见用心良苦!
 
 ```{r echo=FALSE}
 datatable(students,
