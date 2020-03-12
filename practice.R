@@ -1,3 +1,6 @@
+
+# 2019 代码 -----------------------------------------------------------------
+
 df <- data.frame(
   x=c('a','b','c'),
   y=1:3,
@@ -12,7 +15,6 @@ for(i in 1:5){
 
 write.csv(df,file = '我的文件.csv')
 
-############################
 
 df <- data.frame(
   name=c('张三','李四','王五','赵六'),
@@ -308,3 +310,18 @@ ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=area_q))+
 
 # your_data 是你要画的dataframe，其中要有省名NAME_1
 plot_data <- join(china_map_data, your_data, type = 'full')
+
+
+
+# 2020 代码 -----------------------------------------------------------------
+
+# 导论
+5+5+7+9+10
+plot(cars)
+plot(1:10)
+hist(rnorm(10000))
+iris
+j <- 0
+for (i in 1:100){
+  j=i+j}
+j
