@@ -3,7 +3,6 @@ title: "零基础学数据可视化"
 subtitle: "四、高级绘图 ggplot2"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"
-date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
     css: [zh-CN.css,custom.css,xaringan-themer.css]
@@ -255,7 +254,7 @@ ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
 # 其它图形的绘制
 ## 先载入一份关于教师薪酬的数据
 ```{r message=FALSE}
-library(car)
+library(carData)
 data("Salaries")
 head(Salaries)
 ```
@@ -363,7 +362,7 @@ ggplot(economics,aes(x=date,y=unemploy))+
 ---
 # 点图
 ```{r,out.height=400,fig.align='center'}
-df <- mtcars %>% mutate(car=factor(row.names(mtcars)))
+df <- mtcars %>% mutate(car=row.names(mtcars))
 ggplot(df,aes(car,mpg))+
   geom_point(shape=21,size=3)
 ```

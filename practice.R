@@ -136,9 +136,9 @@ dat1 <- citydata %>%
            city=='杭州',
          year>=2003&year<=2017) %>% 
   spread(city,gdp) 
-
+head(dat1)
 attach(dat1)
-par(family='STKaiti',lwd=1.5,cex=1.2)
+par(family='STXihei',lwd=1.5,cex=1.2)
 plot(year,北京,type='b',pch=1,lty=1,col=1,
      xlim = c(2003,2017),ylim = c(2000,31000),
      xlab='年份',ylab = 'GDP(亿元)',
@@ -166,8 +166,6 @@ ggplot(mycars,aes(x=speed,y=dist,col=type,pch=type))+
        x= "Speed (mph)", y= "Stopping distance (ft)",
        pch="Type",col="Type")+
   theme_economist()
-
-
 
 
 ggplot(Salaries,aes(x=rank,fill=sex))+
@@ -321,7 +319,579 @@ plot(cars)
 plot(1:10)
 hist(rnorm(10000))
 iris
+
 j <- 0
 for (i in 1:100){
-  j=i+j}
+  j=i+j
+  print(j)
+  }
 j
+
+# 数据处理基础
+
+a<-1
+a
+is.numeric(a)
+b <- 'peter'
+b
+c <- '2019-09-16'
+c
+class(c)
+c <- as.Date('2019-09-16')
+c
+class(c)
+
+e <- TRUE
+e
+class(e)
+
+f <- c(2,4,6)
+f
+
+seq(2,4,by=0.5)
+seq(1, 9, by = 2) 
+
+1:30
+
+lalala <- "找得到对象"
+lalala
+
+lalala <- c(1,3,5,2,4)
+
+order <- sort(lalala,index.return=TRUE,decreasing = TRUE)
+order
+
+x <- c(1,2,3,4,5)
+x[x>3]
+
+cut <- c('差','一般','良好','优秀')
+class(cut)
+as.factor(cut)
+
+df <- data.frame(
+  x=c('a','b','c'),
+  y=1:3,
+  z=c(2,5,3)
+)
+df
+class(df)
+
+i <- 5
+if(i>3){
+  print('yes') 
+} else {
+  print('no')
+}
+
+ifelse(i>3,i/2,i*2)
+
+
+for(i in 1:10){
+  j <- i+10
+  print(j)
+}
+
+
+mydf <- data.frame(x=c('A','B','C'),
+                 '2010'=c(1,3,4),
+                 '2011'=c(3,5,2),
+                 check.names = FALSE)
+mydf
+
+library(tidyr)
+df_gather <- gather(mydf,
+                    key="year",
+                    value = "score",-x)
+df_gather
+
+df_spread <- spread(df_gather,
+                    key = "year",
+                    value = "score")
+df_spread
+
+library(dplyr)
+df_gather2 <- mutate(df_gather,
+                     value2=score*2,value3=score/5)
+df_gather2
+
+df_gather <- mutate(df_gather,value=score)
+
+df_gather %>% 
+  mutate(value3=ifelse(year=='2011',
+                           value*3,
+                           value)) %>% 
+  mutate(value4=value*100) 
+  
+df3 <- data.frame(x=c('lala','dada'),y=2:3)
+
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(max)
+
+iris
+summary(iris)
+
+WriteXLS(df_merge,"df_merge.xls")
+
+
+library(dplyr)
+scores %>% 
+  filter(chinese==max(chinese)) %>% 
+  select(name,chinese)
+
+
+scores %>% 
+  mutate(total=rowSums(scores[,-1])) %>% 
+  filter(total==max(total))
+
+
+library(dplyr)
+library(tidyr)
+
+#练习1：
+#请整理一下全国各省近10年的GDP数据 由短数据变成长数据
+head(gdpdata)
+gdpdata_long <- gdpdata %>% 
+  gather(key=year,value = gdp,-region)
+head(gdpdata_long)
+View(gdpdata_long)
+
+#练习2：
+head(students)
+head(scores)
+#请列出总分最高分和最低分（姓名和分数）
+scores %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  filter(total==max(total))
+
+scores %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  filter(total==min(total))
+
+#请列出各科成绩最高分的学生（姓名和分数）
+scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  group_by(subject) %>% 
+  summarise_at("score",max)
+
+scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  group_by(subject) %>% 
+  filter(score==max(score))
+  
+#请计算各科及格率（60分为及格线）
+scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  mutate(jige=ifelse(score>=60,1,0)) %>% 
+  group_by(subject) %>% 
+  summarise_at("jige",sum) %>% 
+  mutate(jigelv=jige/396*100) 
+
+#请按班级分别计算各科平均成绩
+table(students$class)
+scores %>% 
+  merge(students,by="name") %>% 
+  select(-name,-gender) %>% 
+  group_by(class) %>% 
+  summarise_all(mean)
+  
+
+#请列出各个班级总分最高和最低的学生（姓名和分数）
+scores %>% 
+  merge(students,by="name") %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  group_by(class) %>% 
+  filter(total==max(total)) %>% 
+  arrange(class)
+  
+scores %>% 
+  merge(students,by="name") %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  group_by(class) %>% 
+  filter(total==min(total)) %>% 
+  arrange(class)
+
+#请分班级比较男生和女生的成绩情况（总分与各科）
+
+## 总分
+scores %>% 
+  merge(students,by="name") %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  group_by(class,gender) %>% 
+  filter(total==max(total)) %>% 
+  arrange(class,gender)
+
+scores %>% 
+  merge(students,by="name") %>% 
+  gather(key=subject,value=score,-name,-class,-gender) %>% 
+  group_by(class,gender,subject) %>% 
+  filter(score==max(score)) %>% 
+  arrange(class,subject,gender)
+
+####################################################################
+
+filter()
+arrange()
+head(mtcars) %>% filter(mpg==21)
+arrange(head(mtcars), cyl,disp)
+
+
+#练习1：
+#请整理一下全国各省近10年的GDP数据 由短数据变成长数据
+library(dplyr)
+library(tidyr)
+head(gdpdata)
+gdpdata_long <- gdpdata %>% 
+  gather(key=year,value=gdp,-region)
+View(gdpdata_long)
+
+
+
+#练习2：
+
+#请列出总分最高分和最低分（姓名和分数）
+head(scores)
+scores %>% 
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  filter(total==min(total))
+
+#请列出各科成绩最高分的学生（姓名和分数）
+head(scores)
+scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  group_by(subject) %>% 
+  summarise_at("score",max)
+
+lala <- scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  group_by(subject) %>% 
+  filter(score==max(score))
+View(lala)
+
+#请计算各科及格率（60分为及格线）
+scores %>% 
+  gather(key=subject,value=score,-name) %>% 
+  mutate(jige=ifelse(score>=60,1,0)) %>% 
+  group_by(subject) %>% 
+  summarise_at("jige",sum) %>% 
+  mutate(jigelv=jige/396*100)
+
+
+#请按班级分别计算各科平均成绩
+head(students)
+scores %>% 
+  merge(students,by="name") %>% 
+  select(-name,-gender) %>% 
+  group_by(class) %>% 
+  summarise_all(mean)
+
+#请列出各个班级总分最高和最低的学生（姓名和分数）
+
+scores %>% 
+  merge(students,by="name") %>%
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  group_by(class) %>% 
+  filter(total==min(total)) %>% 
+  arrange(class)
+
+#请分班级比较男生和女生的成绩情况（总分与各科）
+
+scores %>% 
+  merge(students,by="name") %>%
+  mutate(total=chinese+math+english+physics+chemistry+biology) %>% 
+  group_by(class,gender) %>% 
+  filter(total==max(total)) %>% 
+  arrange(class)
+
+
+scores %>% 
+  merge(students,by="name") %>% 
+  gather(key=subject,value=score,-name,-class,-gender) %>% 
+  group_by(class,gender,subject) %>% 
+  filter(score==max(score)) %>% 
+  arrange(class,subject)
+  
+  
+
+## 基础绘图
+
+mpg
+mtcars$mpg
+attach(mtcars)
+plot(wt, mpg)
+title("Regression of MPG on Weight")
+abline(lm(mpg~wt),col='red')
+detach(mtcars)
+
+dose  <- c(20, 30, 40, 45, 60)
+drugA <- c(16, 20, 27, 40, 60)
+drugB <- c(15, 18, 25, 31, 40)
+data.frame(dose,drugA,drugB)
+
+plot(dose, drugA, type="s") 
+
+opar <- par(no.readonly=TRUE) 
+par(lty=2, pch=17)
+plot(dose, drugA, type="b")
+par(opar)
+
+plot(dose, drugA, type="b",
+     lty=2,pch=13,cex=3,lwd=3,col="darkblue",
+     main = "this is a picture",
+     sub="This is hypothetical data",
+     xlab = "dose use",
+     ylab="response to drug A ",
+     xlim=c(18,60),ylim=c(0, 65))
+
+
+opar <- par(no.readonly=TRUE)
+par(lwd=2, cex=1.5)
+
+plot(dose, drugA, type="b",pch=15, lty=1, col="red", ylim=c(0, 60),
+     main="Drug A vs. Drug B",
+     xlab="Drug Dosage", ylab="Drug Response")
+lines(dose, drugB, type="b",pch=17, lty=2, col="blue")
+abline(h=30, lwd=1.5, lty=2, col="gray")
+legend("topright", title="Drug Type", c("A","B"),
+       box.col = "blue", 
+       lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
+
+
+## plot绘图 作业讲解
+library(dplyr)
+library(tidyr)
+dat1 <- citydata %>% 
+  gather(year,gdp,-city) %>% 
+  filter(city=="北京"|
+           city=="上海"|
+           city=="广州"|
+           city=="深圳"|
+           city=="大连",
+         year>=2003&year<=2017) %>% 
+  spread(city,gdp)
+
+attach(dat1)
+plot(year,北京,type = "b",col=1,lty=1,pch=1,
+     xlab = "年份",ylab = "GDP(亿元)",
+     ylim=c(2000,31000),
+     main="五个城市经济发展比较（2003-2017）")
+lines(year,上海,type="b",col=2,lty=2,pch=2)
+lines(year,广州,type="b",col=3,lty=3,pch=3)
+lines(year,深圳,type="b",col=4,lty=4,pch=4)
+lines(year,大连,type="b",col=5,lty=5,pch=5)
+legend("topleft",c("北京","上海","广州","深圳","大连"),
+       col=1:5,lty=1:5,pch=1:5)
+detach(dat1)
+
+
+## 讲授内容
+
+head(mtcars)
+attach(mtcars)
+par(mfrow=c(4,1))
+plot(wt,mpg, main="Scatterplot of wt vs. mpg")
+plot(wt,disp, main="Scatterplot of wt vs. disp")
+hist(wt, main="Histogram of wt")
+boxplot(wt, main="Boxplot of wt")
+detach(mtcars)
+
+barplot(1:10,col=1:10)
+display.brewer.all()
+brewer.pal(5,"Reds")
+barplot(1:8,col=brewer.pal(8,"RdBu"))
+
+df <- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df[,1:2])
+barplot(df[,1:2],beside = T)
+
+df
+row.names(df) <- c('A','B','C','D')
+barplot(df,beside = TRUE,legend.text = TRUE,col=brewer.pal(4,"RdBu"))
+
+pie(1:10,col = rainbow(10))
+rep(1, 24)
+pie(rep(1, 24), col = rainbow(24))
+pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+names(pie.sales) <- c("Blueberry", "Cherry",
+    "Apple", "Boston Cream", "Other", "Vanilla Cream")
+
+## ggplot2
+library(ggplot2)
+library(dplyr)
+library(ggthemes)
+cars
+mycars <- cars %>% 
+  mutate(type=rep(c("Domestic","Foreign"),25)) #生成类别变量
+head(mycars)
+
+ggplot(data = mycars,aes(x=speed,y=dist,col=type,shape=type))+
+  geom_point(size=3)+
+  labs(title="The preformance comparison of two types of cars",
+       subtitle = "Note that the data were recorded in the 1920s",
+       caption = "Source: Ezekiel, M. (1930) Methods of Correlation Analysis. Wiley.",
+       x= "Speed (mph)", y= "Stopping distance (ft)")+
+  theme_economist_white()
+
+## ggplot2 其它图形的绘制
+library(carData)
+data("Salaries")
+head(Salaries)
+table(Salaries$discipline)
+ggplot(Salaries,aes(x=salary,fill=sex))+
+  geom_density(alpha=0.5)
+
+library(ggthemes)
+ggplot(Salaries,aes(x=rank,fill=sex))+
+  geom_bar(position = "dodge")+
+  theme_economist()
+
+
+head(economics)
+head(economics_long)
+
+ggplot(economics,aes(date,unemploy))+
+  geom_line(col="blue")
+
+ggplot(economics_long, 
+       aes(date, value01, 
+           colour = variable)) +
+  geom_line()
+
+
+ggplot(economics,aes(x=date,y=unemploy))+
+  geom_bar(aes(color=unemploy),stat = "identity")+
+  geom_line()+
+  scale_color_gradientn(colors = brewer.pal(9,"Reds"))
+
+mtcars
+library(dplyr)
+df <- mtcars %>% 
+  mutate(car=row.names(mtcars)) 
+
+order <- sort(df$mpg,index.return=T,decreasing = F)
+df$car_fator <- factor(df$car,levels = df$car[order$ix])
+
+ggplot(df,aes(mpg,car_fator))+
+  geom_point(shape=21,size=3,color="black",fill="red")
+
+map('state', fill = TRUE, col = palette())
+
+## 空间绘图
+states_map <- map_data("state")
+head(states_map)
+unique(states_map$region)
+
+ggplot(states_map,aes(x=long,y=lat,group=group))+
+  geom_polygon(fill="white",col="black")
+
+head(USArrests)
+
+crimes <- USArrests %>% 
+  mutate(region=tolower(row.names(USArrests)))
+
+crimes_map <- merge(states_map,crimes,by="region") %>% 
+  arrange(group,order)
+head(crimes_map)
+
+p <- ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
+  geom_polygon(col="black")+
+  scale_fill_gradient2(low = "green", mid="gray",high = "red",
+                       midpoint = median(crimes_map$Murder))+
+  labs(title="Per 100,000 residents for murder in each of the 50 US states in 1973")+
+  theme(plot.title = element_text(size=10,color = "blue",hjust = 0.5))
+
+crimes_map_mean <- crimes_map %>%
+  group_by(region) %>% 
+  summarise_all(mean)
+  
+p+
+  geom_text(data=crimes_map_mean,aes(x=long,y=lat,label=region),nudge_y = 0.5)+
+  geom_point(data=crimes_map_mean,aes(x=long,y=lat))
+
+
+## 中国地图
+library(ggthemes)
+library(plyr) # 安装
+library(dplyr)
+library(ggplot2)
+library(maptools) # 安装
+library(maps) # 安装
+library(RColorBrewer)
+
+china_map <- readShapePoly(file.choose())
+
+head(china_map1)
+
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Greens"))
+
+unique(china_map_data$province)
+province2018 <- 分省数据2018 
+china_map_data_new <- china_map_data %>% 
+  merge(province2018,by="province",all.x=T) %>% 
+  arrange(group,order)
+ggplot(china_map_data_new,aes(x=long,y=lat,group=group,fill=gdp)) +
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+
+unique(china_map_data_new$province)
+
+
+
+library(sf)
+china_map <- st_read(file.choose())
+class(china_map)
+head(china_map)
+
+library(ggplot2)
+library(RColorBrewer)
+ggplot(data = china_map)+
+  geom_sf()
+
+ggplot(data = china_map)+
+  geom_sf(fill="white")+
+  theme_light()
+
+ggplot(data = china_map)+
+  geom_sf(aes(fill=AREA))+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+
+
+## 课程总结
+
+plot()
+barplot(1:100)
+hist(1:100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

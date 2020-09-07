@@ -139,7 +139,7 @@ include_graphics("土拨鼠.gif")
 > 先下载数据 [中国地图](/datavis/data/chinaprovinceborderdata_tar_gz.zip)。解压后包含三个文件
 
 ## 读取地图
-```{r}
+```{r warning=FALSE}
 # 加载maptools包
 # china_map <- readShapePoly(file.choose())
 china_map <- readShapePoly("bou2_4p.shp")
@@ -151,22 +151,23 @@ plot(china_map)
 ```
 
 ---
-# 处理数据
-```{r}
-# mac读取中文容易乱码，需要转换
-x <- china_map@data
-xs <-data.frame(x, id = seq(0:924)-1)
-#添加一列新的省名，把原省名的中文格式转换为UTF-8
-xs$NAME1 <- iconv(xs$NAME,"GBK", "UTF-8")
-head(xs)
-```
-
----
 # 转换成ggplot2能识别的数据
 ```{r}
 # 转换数据
 china_map1 <- fortify(china_map)
 head(china_map1)
+```
+
+---
+# 处理数据
+```{r}
+# mac读取中文容易乱码，需要转换
+x <- china_map@data
+#添加一列新的省名，把原省名的中文格式转换为UTF-8
+x$province <- iconv(x$NAME,"GBK", "UTF-8")
+
+xs <-data.frame(x, id = seq(0:924)-1)
+head(xs)
 ```
 
 ---
@@ -186,10 +187,32 @@ ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
   theme_light()
 ```
 ---
+# 加入经济数据
+```{r}
+library(readxl)
+province2018 <- read_excel("分省数据2018.xls")
+head(province2018)
+china_map_data <- china_map_data %>% 
+  merge(province2018,by="province") %>% 
+  arrange(group,order)
+```
+
+
+---
+# 绘制各省GDP分布
+```{r fig.height=5,fig.width=10}
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=gdp))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+```
+
+---
 
 ```{r echo=FALSE,out.height=600}
 include_graphics("toufa.jpeg")
 ```
+
 ---
 class:center middle
 background-image: url("titleimage.jpg")

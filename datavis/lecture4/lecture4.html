@@ -4,7 +4,6 @@
     <title>零基础学数据可视化</title>
     <meta charset="utf-8" />
     <meta name="author" content="毛益民　副教授" />
-    <meta name="date" content="2020-03-12" />
     <link rel="stylesheet" href="zh-CN.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -17,7 +16,6 @@ class: center, middle, inverse, title-slide
 ## 四、高级绘图 ggplot2
 ### 毛益民　副教授
 ### 浙江工商大学公共管理学院
-### 2020-03-12
 
 ---
 
@@ -261,7 +259,7 @@ ggplot(mycars,aes(x=speed,y=dist,col=type,shape=type))+
 ## 先载入一份关于教师薪酬的数据
 
 ```r
-library(car)
+library(carData)
 data("Salaries")
 head(Salaries)
 ```
@@ -421,7 +419,7 @@ ggplot(economics,aes(x=date,y=unemploy))+
 # 点图
 
 ```r
-df &lt;- mtcars %&gt;% mutate(car=factor(row.names(mtcars)))
+df &lt;- mtcars %&gt;% mutate(car=row.names(mtcars))
 ggplot(df,aes(car,mpg))+
   geom_point(shape=21,size=3)
 ```

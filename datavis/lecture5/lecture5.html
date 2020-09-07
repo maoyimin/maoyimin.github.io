@@ -151,10 +151,6 @@ ggplot(crimes_map,aes(x=long,y=lat,group=group,fill=Murder))+
 # china_map &lt;- readShapePoly(file.choose())
 china_map &lt;- readShapePoly("bou2_4p.shp")
 ```
-
-```
-## Warning: readShapePoly is deprecated; use rgdal::readOGR or sf::st_read
-```
 ---
 # 查看地图
 
@@ -163,35 +159,6 @@ plot(china_map)
 ```
 
 &lt;img src="lecture5_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
-
----
-# 处理数据
-
-```r
-# mac读取中文容易乱码，需要转换
-x &lt;- china_map@data
-xs &lt;-data.frame(x, id = seq(0:924)-1)
-#添加一列新的省名，把原省名的中文格式转换为UTF-8
-xs$NAME1 &lt;- iconv(xs$NAME,"GBK", "UTF-8")
-head(xs)
-```
-
-```
-##      AREA PERIMETER BOU2_4M_ BOU2_4M_ID ADCODE93 ADCODE99
-## 0  54.447    68.489        2         23   230000   230000
-## 1 129.113   129.933        3         15   150000   150000
-## 2 175.591    84.905        4         65   650000   650000
-## 3  21.315    41.186        5         22   220000   220000
-## 4  15.603    38.379        6         21   210000   210000
-## 5  41.508    76.781        7         62   620000   620000
-##                                                  NAME id            NAME1
-## 0                           \xba\xda\xc1\xfa\xbd\xadʡ  0         黑龙江省
-## 1           \xc4\xda\xc3ɹ\xc5\xd7\xd4\xd6\xce\xc7\xf8  1     内蒙古自治区
-## 2 \xd0½\xaeά\xce\xe1\xb6\xfb\xd7\xd4\xd6\xce\xc7\xf8  2 新疆维吾尔自治区
-## 3                                   \xbc\xaa\xc1\xd6ʡ  3           吉林省
-## 4                                   \xc1\xc9\xc4\xfeʡ  4           辽宁省
-## 5                                   \xb8\xca\xcb\xe0ʡ  5           甘肃省
-```
 
 ---
 # 转换成ggplot2能识别的数据
@@ -220,6 +187,36 @@ head(china_map1)
 ```
 
 ---
+# 处理数据
+
+```r
+# mac读取中文容易乱码，需要转换
+x &lt;- china_map@data
+#添加一列新的省名，把原省名的中文格式转换为UTF-8
+x$province &lt;- iconv(x$NAME,"GBK", "UTF-8")
+
+xs &lt;-data.frame(x, id = seq(0:924)-1)
+head(xs)
+```
+
+```
+##      AREA PERIMETER BOU2_4M_ BOU2_4M_ID ADCODE93 ADCODE99
+## 0  54.447    68.489        2         23   230000   230000
+## 1 129.113   129.933        3         15   150000   150000
+## 2 175.591    84.905        4         65   650000   650000
+## 3  21.315    41.186        5         22   220000   220000
+## 4  15.603    38.379        6         21   210000   210000
+## 5  41.508    76.781        7         62   620000   620000
+##                                                  NAME         province id
+## 0                           \xba\xda\xc1\xfa\xbd\xadʡ         黑龙江省  0
+## 1           \xc4\xda\xc3ɹ\xc5\xd7\xd4\xd6\xce\xc7\xf8     内蒙古自治区  1
+## 2 \xd0½\xaeά\xce\xe1\xb6\xfb\xd7\xd4\xd6\xce\xc7\xf8 新疆维吾尔自治区  2
+## 3                                   \xbc\xaa\xc1\xd6ʡ           吉林省  3
+## 4                                   \xc1\xc9\xc4\xfeʡ           辽宁省  4
+## 5                                   \xb8\xca\xcb\xe0ʡ           甘肃省  5
+```
+
+---
 # 合并地图数据和一般数据
 
 ```r
@@ -243,7 +240,7 @@ head(china_map_data)
 ## 4 121.5391 53.34172     4 FALSE     1  0   0.1 54.447    68.489        2
 ## 5 121.5738 53.34818     5 FALSE     1  0   0.1 54.447    68.489        2
 ## 6 121.5840 53.34964     6 FALSE     1  0   0.1 54.447    68.489        2
-##   BOU2_4M_ID ADCODE93 ADCODE99                      NAME    NAME1
+##   BOU2_4M_ID ADCODE93 ADCODE99                      NAME province
 ## 1         23   230000   230000 \xba\xda\xc1\xfa\xbd\xadʡ 黑龙江省
 ## 2         23   230000   230000 \xba\xda\xc1\xfa\xbd\xadʡ 黑龙江省
 ## 3         23   230000   230000 \xba\xda\xc1\xfa\xbd\xadʡ 黑龙江省
@@ -263,8 +260,49 @@ ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=AREA))+
 
 ![](lecture5_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 ---
+# 加入经济数据
+
+```r
+library(readxl)
+province2018 &lt;- read_excel("分省数据2018.xls")
+head(province2018)
+```
+
+```
+## # A tibble: 6 x 5
+##   province        gdp first second  third
+##   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 北京市       33106.  121.  5477. 27508.
+## 2 天津市       13363.  175.  4835.  8352.
+## 3 河北省       32495. 3339. 12904. 16252.
+## 4 山西省       15958.  741.  7074.  8143.
+## 5 内蒙古自治区 16141. 1751.  6335.  8055.
+## 6 辽宁省       23511. 2021.  9049. 12441.
+```
+
+```r
+china_map_data &lt;- china_map_data %&gt;% 
+  merge(province2018,by="province") %&gt;% 
+  arrange(group,order)
+```
+
+
+---
+# 绘制各省GDP分布
+
+```r
+ggplot(china_map_data,aes(x=long,y=lat,group=group,fill=gdp))+
+  geom_polygon(col="black")+
+  scale_fill_gradientn(colours = brewer.pal(9,"Reds"))+
+  theme_light()
+```
+
+![](lecture5_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
 
 &lt;img src="toufa.jpeg" width="1088" height="600" /&gt;
+
 ---
 class:center middle
 background-image: url("titleimage.jpg")
