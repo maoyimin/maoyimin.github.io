@@ -35,16 +35,13 @@ duo_accent(primary_color = "#006747",
 # 为何学数据可视化？
 
 <img style="float: center; width: 800px;" src="datavis.jpeg">
+
 ---
 # 图表的作用
 .blockquote[
 - 真实、准确、全面地展示数据；
 - 以较小的空间承载较多的信息；
 - 揭示数据的本质、关系、规律。]
-
---
--
--
 
 .content-box-yellow[可视化的终极目标是洞悉蕴含在数据中的现象和规律。
 
@@ -164,13 +161,20 @@ demog_plot <- ggplot(demog, aes(age, height, fill=sex)) +
 ggplotly(demog_plot)
 ```
 
-
-
 ---
 # 各种图形
 ```{r echo=FALSE, fig.align="center",out.width='90%'}
 include_graphics("charttype.png")
 ```
+
+---
+# 怎么安装R
+
+需要下载两样东西：R & Rstudio.
+- R: https://cran.r-project.org/
+
+- Rstudio（选择free版即可）: https://rstudio.com/products/rstudio/download/
+
 ---
 # R 代码
 
