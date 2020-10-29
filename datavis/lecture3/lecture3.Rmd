@@ -159,10 +159,17 @@ plot(dose, drugA, type="b",pch=15, lty=1, col="red", ylim=c(0, 60),
      main="Drug A vs. Drug B",
      xlab="Drug Dosage", ylab="Drug Response")
 lines(dose, drugB, type="b",pch=17, lty=2, col="blue")
-abline(h=c(30), lwd=1.5, lty=2, col="gray")
+abline(h=30, lwd=1.5, lty=2, col="gray")
 legend("topleft", title="Drug Type", c("A","B"),
        lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
 par(opar)
+```
+
+---
+## 五个城市近十年GDP比较
+
+```{r echo=FALSE,out.width="120%",fig.align='center'}
+include_graphics('城市gdp比较.png')
 ```
 
 ---

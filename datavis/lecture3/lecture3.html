@@ -211,7 +211,7 @@ plot(dose, drugA, type="b",pch=15, lty=1, col="red", ylim=c(0, 60),
      main="Drug A vs. Drug B",
      xlab="Drug Dosage", ylab="Drug Response")
 lines(dose, drugB, type="b",pch=17, lty=2, col="blue")
-abline(h=c(30), lwd=1.5, lty=2, col="gray")
+abline(h=30, lwd=1.5, lty=2, col="gray")
 legend("topleft", title="Drug Type", c("A","B"),
        lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
 ```
@@ -221,6 +221,11 @@ legend("topleft", title="Drug Type", c("A","B"),
 ```r
 par(opar)
 ```
+
+---
+## 五个城市近十年GDP比较
+
+&lt;img src="城市gdp比较.png" width="120%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## 图形组合
@@ -235,7 +240,7 @@ hist(wt, main="Histogram of wt")
 boxplot(wt, main="Boxplot of wt")
 ```
 
-&lt;img src="lecture3_files/figure-html/unnamed-chunk-14-1.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-15-1.png" width="40%" style="display: block; margin: auto;" /&gt;
 
 ```r
 detach(mtcars)
@@ -247,7 +252,7 @@ detach(mtcars)
 barplot(1:10)
 ```
 
-![](lecture3_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](lecture3_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
 # 堆叠条形图
@@ -258,7 +263,7 @@ df &lt;- cbind(a=1:4,b=c(1,3,2,4))
 barplot(df[,1:2])
 ```
 
-![](lecture3_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](lecture3_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 ---
 # 分开的条形图
 
@@ -267,7 +272,7 @@ df &lt;- cbind(a=1:4,b=c(1,3,2,4))
 barplot(df,beside = TRUE)
 ```
 
-![](lecture3_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](lecture3_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 ---
 #带图例的条形图
 
@@ -278,7 +283,7 @@ row.names(df) &lt;- c('A','B','C','D')
 barplot(df,beside = TRUE,legend.text = TRUE)
 ```
 
-![](lecture3_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+![](lecture3_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 ---
 # 饼图
 
@@ -286,7 +291,7 @@ barplot(df,beside = TRUE,legend.text = TRUE)
 pie(rep(1, 24), col = rainbow(24))
 ```
 
-![](lecture3_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+![](lecture3_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
 ---
 # 带标签的饼图
 
@@ -298,7 +303,7 @@ pie(pie.sales, col = c("purple", "violetred1", "green3",
                        "cornsilk", "cyan", "white"))
 ```
 
-&lt;img src="lecture3_files/figure-html/unnamed-chunk-20-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture3_files/figure-html/unnamed-chunk-21-1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -359,30 +364,20 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 })();
 (function() {
   "use strict"
-  /* Replace <script> tags in slides area to make them executable
-   *
-   * Runs after post-processing of markdown source into slides and replaces only
-   * <script>s on the last slide of continued slides using the .has-continuation
-   * class added by xaringan. Finally, any <script>s in the slides area that
-   * aren't executed are commented out.
-   */
+  // Replace <script> tags in slides area to make them executable
   var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+    '.remark-slides-area .remark-slide-container script'
   );
   if (!scripts.length) return;
   for (var i = 0; i < scripts.length; i++) {
     var s = document.createElement('script');
     var code = document.createTextNode(scripts[i].textContent);
     s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
     scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-  var scriptsNotExecuted = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container.has-continuation script'
-  );
-  if (!scriptsNotExecuted.length) return;
-  for (var i = 0; i < scriptsNotExecuted.length; i++) {
-    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
-    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
   }
 })();
 (function() {
