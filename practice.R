@@ -666,11 +666,12 @@ dat1 <- citydata %>%
            city=="上海"|
            city=="广州"|
            city=="深圳"|
-           city=="大连",
+           city=="杭州",
          year>=2003&year<=2017) %>% 
   spread(city,gdp)
 
 attach(dat1)
+par(family='STXihei',lwd=1.5,cex=1.2)
 plot(year,北京,type = "b",col=1,lty=1,pch=1,
      xlab = "年份",ylab = "GDP(亿元)",
      ylim=c(2000,31000),
@@ -678,8 +679,8 @@ plot(year,北京,type = "b",col=1,lty=1,pch=1,
 lines(year,上海,type="b",col=2,lty=2,pch=2)
 lines(year,广州,type="b",col=3,lty=3,pch=3)
 lines(year,深圳,type="b",col=4,lty=4,pch=4)
-lines(year,大连,type="b",col=5,lty=5,pch=5)
-legend("topleft",c("北京","上海","广州","深圳","大连"),
+lines(year,杭州,type="b",col=5,lty=5,pch=5)
+legend("topleft",c("北京","上海","广州","深圳","杭州"),
        col=1:5,lty=1:5,pch=1:5)
 detach(dat1)
 

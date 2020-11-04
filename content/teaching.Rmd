@@ -13,6 +13,7 @@ title: "Teaching"
 - 《零基础学数据可视化》 [导论](/datavis/lecture1/lecture1.html)
 [数据处理基础（上、下）](/datavis/lecture2/lecture2.html)
 [基础绘图](/datavis/lecture3/lecture3.html)
+[高级绘图（上、下）](/datavis/lecture4/lecture4.html)
 
 ### 2019-2020学年
 
