@@ -1,5 +1,5 @@
 ---
-title: "零基础学数据可视化"
+title: "数据管理与可视化"
 subtitle: "三、基础绘图"
 author: "毛益民　副教授"
 institute: "浙江工商大学公共管理学院"

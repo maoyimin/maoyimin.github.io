@@ -7,6 +7,7 @@ title: "Teaching"
 ### 2020-2021学年
 
 - 《数据管理与可视化》 [导论](/datavis/lecture1/lecture1.html) [数据处理基础](/datavis/lecture2/lecture2.html)
+[基础绘图](/datavis/lecture3/lecture3.html)
 
 - 《城市管理学》
 

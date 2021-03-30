@@ -1,4 +1,3 @@
-
 # 2019 代码 -----------------------------------------------------------------
 
 df <- data.frame(
@@ -527,7 +526,7 @@ scores %>%
   filter(score==max(score)) %>% 
   arrange(class,subject,gender)
 
-####################################################################
+########
 
 filter()
 arrange()
@@ -867,31 +866,101 @@ barplot(1:100)
 hist(1:100)
 
 
+# 2021 代码 -----------------------------------------------------------------
+demo()
+demo(graphics)
+demo(persp)
+demo(Japanese)
+
+#向量
+a <- 1:5
+a
+
+b <- "张三"
+b
+
+c <- as.Date("2021-03-09")
+c
+class(c)
+
+birthday <- as.Date("1987-01-13")
+c-birthday
+
+d <- TRUE
+d
+5==5
+
+plot(as.factor(1:5))
+plot(1:5)
+
+seq(1,10,length.out = 4)
+seq(0, 1, length.out = 11)
+
+rep(1:4, each = 2) 
+rep(1:4, time = 2) 
+rep(1:4, c(2,2,5,2))
+
+cut(1:10,4)
+
+e <- sample(100)
+e
+sort(e,decreasing = T)
+
+library(tidyr)
+mydf <- data.frame(x=c('A','B','C'),
+                   '2010'=c(1,3,4),
+                   '2011'=c(3,5,2),
+                   "2012"=c(3,7,8),
+                   check.names = FALSE)
+mydf
+df_gather <- gather(mydf,key="year",value = "score",-x)
+spread(df_gather,year,score)
+
+
+dat <- 分省年度数据
+df_gather <- gather(dat,key="year",value = "gdp",-region)
+head(df_gather)
+
+spread(df_gather,year,gdp)
+
+library(dplyr)
+iris %>% 
+  group_by(Species) %>% 
+  summarise_all(min)
+
+head(scores)
+scores %>% 
+  mutate(total=chinese+math+english+
+           physics+chemistry+biology) %>% 
+  filter(total==min(total)|
+           total==max(total))
+
+library(tidyr)
+scores %>% 
+  gather(key = subject,value = score,-name) %>%
+  mutate(score=ifelse(subject=="chinese"&
+                        score==100,99,score)) %>% 
+  group_by(subject) %>% 
+  filter(score==min(score)) %>% 
+  View()
+
+
+scores %>% 
+  gather(key = subject,value = score,-name) %>% 
+  mutate(jige=ifelse(score>=60,1,0)) %>% 
+  group_by(subject) %>% 
+  summarise_at("jige",sum) %>% 
+  mutate(jigelv=jige/396*100)
+
+
+scores %>% 
+  gather(key = subject,value = score,-name) %>%
+  group_by(subject) %>%
+  summarise_at("score",list(mean,sd,min,max))
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
