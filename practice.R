@@ -526,7 +526,6 @@ scores %>%
   filter(score==max(score)) %>% 
   arrange(class,subject,gender)
 
-########
 
 filter()
 arrange()
@@ -959,8 +958,179 @@ scores %>%
   summarise_at("score",list(mean,sd,min,max))
 
 
+# 第四题
+head(scores)
+head(students)
+scores %>% 
+  merge(students,by="name") %>% 
+  group_by(class) %>% 
+  select(-name,-gender) %>% 
+  summarise_all(mean) 
+
+
+#第五题
+scores %>% 
+  merge(students,by="name") %>%
+  group_by(class) %>% 
+  mutate(total=chinese+math+english+
+           physics+chemistry+biology) %>% 
+  select(class,name,total) %>% 
+  filter(total==min(total)|
+           total==max(total)) %>% 
+  arrange(class)
+
+#第六题
+
+scores %>% 
+  merge(students,by="name") %>%
+  group_by(class,gender) %>% 
+  mutate(total=chinese+math+english+
+           physics+chemistry+biology) %>% 
+  select(class,gender,name,total) %>% 
+  filter(total==min(total)|
+           total==max(total)) %>% 
+  arrange(class,gender)
+
+head(mtcars)
+plot(mtcars$wt,mtcars$mpg)
+attach(mtcars)
+plot(wt,mpg)
+abline(lm(mpg~wt),col="pink")
+title("this is my first plot")
+detach(mtcars)
+
+dose  <- c(20, 30, 40, 45, 60)
+drugA <- c(16, 20, 27, 40, 60)
+drugB <- c(15, 18, 25, 31, 40)
+plot(dose,drugA,type="s")
+plot(1:100,sample(100),type="s")
+
+opar <- par(no.readonly=TRUE) 
+par(lty=2,pch=17)
+plot(dose,drugA,type="b")
+par(opar) 
+
+
+plot(1:25,pch=1:25,cex=2,type="p",
+     xlim = c(0,25),ylim=c(-2,25))
+text(1:25,1:25-2)
+
+plot(dose,drugA,type="b",lty=3)
+plot(dose, drugA, type="b", lty=3, 
+     lwd=3, pch=15, cex=2,col='pink')
+
+RColorBrewer::display.brewer.all()
+
+
+plot(dose, drugA, type="b",
+     col="red", lty=2, pch=2, lwd=2,
+     main="Clinical Trials for Drug A", #标题
+     sub="This is hypothetical data", # 副标题
+     xlab="Dosage", ylab="Drug Response", # x轴标签
+     xlim=c(18, 60), ylim=c(10, 65)) #坐标轴的尺度范围
+
+
+plot(dose, drugA, type="b",pch=15, lty=1, 
+     col="red", ylim=c(0, 60),
+     main="Drug A vs. Drug B",
+     xlab="Drug Dosage", ylab="Drug Response")
+lines(dose, drugB, type="b",pch=17, lty=2, col="blue")
+abline(h=30, lwd=1.5, lty=2, col="gray")
+legend("topleft", title="Drug Type", c("A","B"),
+       lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
+
+
+# 作图
+library(dplyr)
+library(tidyr)
+
+head(citydata)
+citydata2 <- citydata %>% 
+  gather(key="year",value="gdp",-city) %>% 
+  spread(city,gdp) %>% 
+  filter(year>=2008&year<=2017)
+View(citydata2)  
+
+par(mfrow=c(2,2))
+attach(citydata2)
+plot(year,北京, type="b",lty=1,pch=1,col=1,
+     ylim=c(5000,32000),ylab="GDP",xlab="")
+lines(year,上海, type="b",lty=2,pch=2,col=2)
+lines(year,广州, type="b",lty=3,pch=3,col=3)
+legend("topleft",c("北京","上海","广州"),
+       lty=1:3,pch=1:3,col=1:3)
+detach(citydata2)
+
+plot(1:10)
+boxplot(1:4)
+barplot(1:4)
 
 
 
-  
+df <- cbind(a=1:4,b=c(1,3,2,4))
+barplot(df,col=1:4)
+
+barplot(df,beside = TRUE,
+        col=rainbow(4))
+
+df <- cbind(a=1:4,b=c(1,3,2,4))
+row.names(df) <- c('A','B','C','D')
+barplot(df,beside = TRUE,legend.text = TRUE)
+
+barplot(sample(100))
+abline(h=50.5)
+mean(sample(100))
+
+pie(rep(1, 24),col=rainbow(24))
+rep(1, 24)
+
+pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+
+names(pie.sales) <- paste0(c("Blueberry", "Cherry",
+                             "Apple", "Boston Cream",
+                             "Other", "Vanilla Cream"),
+                           paste0(" (",pie.sales*100,"%)"))
+
+pie(pie.sales,col=rainbow(6))
+
+
+#北上广深杭 2017年
+
+#barplot
+five <- citydata %>% 
+  gather(key="year",value="gdp",-city) %>% 
+  filter(year==2017) %>% 
+  filter(city=="北京"|
+           city=="上海"|
+           city=="广州"|
+           city=="深圳"|
+           city=="杭州")
+barplot(five$gdp,col=rainbow(5),
+        horiz = F,
+        names.arg = five$city)
+
+#pie
+
+pie(five$gdp,col=rainbow(5),
+        labels = five$city)
+
+#十年增幅 2008-2017 增长率 barplot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
